@@ -1,22 +1,6 @@
 <?php
-session_start();
 require_once('header.php');
-require_once('includes/conexion.php');
 ?>
-
-
-  <!DOCTYPE html>
-  <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>JAMES Courses</title>
-    <link rel="stylesheet" href="includes/bootstrap/dist/css/style.css">
-
-  </head>
-
-  <body>
-    <div class="container">
       <div class="col-sm-7">
         <h1>Dejanos un mensaje</h1>
         <br>
@@ -80,14 +64,6 @@ require_once('includes/conexion.php');
 
       </div>
 
-
-
-    </div>
-
-    <footer class="container-fluid text-right">
-      <p>Copyright © 2016 JAMES todos los derechos reservados | Ingenieria en Sistemas Computacionales | IS-801 </p>
-    </footer>
-
-  </body>
-
-  </html>
+      <?php
+      require_once('footer.php');
+      ?>

@@ -9,13 +9,13 @@ require_once('includes/conexion.php');
 
 if(mysql_num_rows($res) == 0) {
 	echo "<script type='text/javascript'>".
-	"alert('Correo no enconrado');".
+	"alert('Correo no encontrado');".
 	"document.location.href = 'index.php';</script>";
 }else {
 	$reg = mysql_fetch_array($res) or die("Error al convertir en registros");
 			if($reg['pass'] == md5($pass)){
 
-				$_SESSION['nombre'] = $email;
+				$_SESSION['email'] = $email;
 				header("Location: home.php");
 			}else{
 				echo "<script type='text/javascript'>".

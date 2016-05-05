@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('includes/conexion.php');
 $id_usuario = $_POST['id_usuario'];
 $id_tutorial = $_POST['id_tutorial'];

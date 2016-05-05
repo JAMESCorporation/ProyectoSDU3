@@ -1,29 +1,11 @@
 <?php
-session_start();
-if($_SESSION['nombre']){
+require_once('header.php');
+if($valorSesion == 1){
   require_once("includes/conexion.php");
-  $sql = "SELECT * FROM Usuario WHERE correo = '".$_SESSION['nombre']."'";
+  $sql = "SELECT * FROM Usuario WHERE correo = '".$correo."'";
   $res = mysql_query($sql,$con) or die(mysql_error());
   $reg = mysql_fetch_array($res);
 ?>
-
-  <!DOCTYPE html>
-  <html>
-
-  <head>
-    <title>Home</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="includes/bootstrap/dist/css/navbar-fixed-top.css">
-    <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="includes/bootstrap/dist/css/style.css">
-    <link rel="shortcut icon" href="includes/bootstrap/assets/ico/favicon.png">
-
-  </head>
-
-  <body>
-    <?php require_once('header.php') ?>
 
       <div class="row ">
         <div id="curso">
@@ -106,20 +88,11 @@ if($_SESSION['nombre']){
       ?>
 
 
-
-      <script src="includes/bootstrap/assets/js/jquery.js"></script>
-      <script src="includes/bootstrap/dist/js/bootstrap.min.js"></script>
-      <script src="includes/script.js"> </script>
-
-  </body>
-
-  </html>
-
   <?php
-}else{
+  }else{
 	echo "<script type='text/javascript'>".
-	"alert('Usted no esta logueado');".
-	"document.location.href = 'index.php';</script>";
-}
-
-?>
+	 "alert('Usted no esta logueado');".
+	  "document.location.href = 'index.php';</script>";
+  }
+  require_once("footer.php");
+  ?>

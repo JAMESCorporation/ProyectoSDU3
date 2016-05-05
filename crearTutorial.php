@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(!isset($_SESSION['nombre'])){
+  if(!isset($_SESSION['email'])){
     echo "No estas logueado <br />";
   }else{
     if(!$_POST){
@@ -12,7 +12,7 @@
       $curso = $_POST['cursos'];
       $directorioCurso = "cursos/".$curso;
       echo $directorioCurso."<br />";
-      $sqlUser = "SELECT id_usuario FROM Usuario WHERE correo = '".$_SESSION['nombre']."'";
+      $sqlUser = "SELECT id_usuario FROM Usuario WHERE correo = '".$_SESSION['email']."'";
       $resUser = mysql_query($sqlUser, $con);
       $regUser = mysql_fetch_array($resUser);
 

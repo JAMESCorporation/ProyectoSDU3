@@ -1,23 +1,16 @@
 <?php
-session_start();
-  if(!isset($_SESSION['nombre'])){
+  require_once('header.php');
+  if($valorSesion == -1){
     echo "No estas logueado. <a href='index.html'>Iniciar Sesión</a>";
   }else{
-    require_once('header.php');
-    require_once('includes/conexion.php');
+
     $sqlUsuarios = "SELECT * FROM Usuario";
     $resUsuarios = mysql_query($sqlUsuarios,$con) or die();
-    $sqlU = "SELECT * FROM Usuario WHERE correo = '".$_SESSION['nombre']."'";
+    $sqlU = "SELECT * FROM Usuario WHERE correo = '".$_SESSION['email']."'";
     $resU = mysql_query($sqlU,$con) or die();
     $regU = mysql_fetch_array($resU)or die();
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Enviar correo</title>
-  </head>
-  <body>
+
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <form class="" action="email.php" method="post">
@@ -30,7 +23,7 @@ session_start();
               <?php } ?>
             </select>
           </div>
-          <input type="hidden" name="correo" value="<?php echo $_SESSION['nombre']; ?>">
+          <input type="hidden" name="correo" value="<?php echo $_SESSION['email']; ?>">
           <input type="hidden" name="nombre" value="<?php echo $regU['nombre_usuario']." ".$regU['primer_apellido']." ".$regU['segundo_apellido']; ?>">
           <div class="form-group">
             <label for="asunto">Asunto</label>
@@ -46,9 +39,8 @@ session_start();
         </form>
       </div>
     </div>
-  </body>
-</html>
 
 <?php
+  require_once('footer.php');
   }
  ?>

@@ -1,21 +1,7 @@
 <?php
-session_start();
-require_once('header.php'); ?>
-
-  <!DOCTYPE html>
-  <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>JAMES Courses</title>
-    <link rel="stylesheet" href="includes/bootstrap/dist/css/style.css">
-
-  </head>
-
-  <body>
-
-    <div class="container">
-      <div class="col-sm-5">
+require_once('header.php');
+?>
+    <div class="col-sm-5">
         <img src="includes/pictures/james.png" alt="Image" class="img-responsive" alt="Imagen responsive">
         <hr>
         <h1 align="center">Perfil</h1>
@@ -42,16 +28,7 @@ require_once('header.php'); ?>
           </ul>
         </p>
       </div>
-    </div>
-
-
-    </div>
-
-    <footer class="container-fluid text-right">
-      <p>Copyright © 2016 JAMES todos los derechos reservados | Ingenieria en Sistemas Computacionales | IS-801
-      </p>
-    </footer>
-
-  </body>
-
-  </html>
+      
+<?php
+require_once('footer.php');
+?>

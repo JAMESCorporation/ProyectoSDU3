@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-  if(!isset($_SESSION)){
+  if(!isset($_SESSION['email'])){
     echo "No estas logueado. <a href='index.html'>Iniciar Sesión</a>";
   }else{
 

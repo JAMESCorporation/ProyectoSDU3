@@ -1,16 +1,7 @@
 <?php
-session_start();
-require_once('header.php'); ?>
+require_once('header.php');
+ ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>JAMES Courses</title>
-	<link rel="stylesheet" href="includes/bootstrap/dist/css/style.css">
-
-</head>
-<body>
 
 <div class="container">
 <div class="row">
@@ -103,41 +94,6 @@ require_once('header.php'); ?>
   <hr>
 </div>
 
-<!-- <div class="container text-center">
-  <h3>Desarrolladores</h3>
-  <br>
-  <div class="row">
-    <div class="col-sm-2">
-      <img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>José Alan</p>
-    </div>
-    <div class="col-sm-2">
-      <img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Misael</p>
-    </div>
-    <div class="col-sm-2">
-      <img src="joker.jpg" class="img-responsive" style="width:100%; height: 80%;" alt="Image">
-      <p>Efrén Odilón</p>
-    </div>
-    <div class="col-sm-2">
-      <img src="saul.jpg" class="img-responsive" style="width:100%" alt="Image">
-      <p>Saul</p>
-    </div>
-  </div>
-</div>
-<br>
--->
-
-<footer class="container-fluid text-right">
-  <p>Copyright © 2016 JAMES todos los derechos reservados | Ingenieria en Sistemas Computacionales | IS-801
-</p>
-</footer>
-
-
-	<script type="text/javascript" src="includes/js/jquery.js"></script>
-	<script type="text/javascript" src="includes/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="includes/js/jquery.validate.js"></script>
-
-</body>
-
-</html>
+<?php
+	require_once("footer.php");
+ ?>

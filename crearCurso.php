@@ -1,13 +1,13 @@
 <?php
   session_start();
-  if(!isset($_SESSION['nombre'])){
+  if(!isset($_SESSION['email'])){
     echo "No estas logueado <br />";
   }else{
     if(!$_POST){
       echo "No se recibieron datos <br />";
     }else{
       require_once("includes/conexion.php");
-      $sqlUser = "SELECT id_usuario FROM Usuario WHERE correo = '".$_SESSION['nombre']."'";
+      $sqlUser = "SELECT id_usuario FROM Usuario WHERE correo = '".$_SESSION['email']."'";
       $resUser = mysql_query($sqlUser, $con);
       $regUser = mysql_fetch_array($resUser);
       $nombre = $_POST['nombre'];
