@@ -5,10 +5,10 @@
   }else{
 
     $sqlUsuarios = "SELECT * FROM Usuario";
-    $resUsuarios = mysql_query($sqlUsuarios,$con) or die();
+    $resUsuarios = mysqli_query($con, $sqlUsuarios) or die();
     $sqlU = "SELECT * FROM Usuario WHERE correo = '".$_SESSION['email']."'";
-    $resU = mysql_query($sqlU,$con) or die();
-    $regU = mysql_fetch_array($resU)or die();
+    $resU = mysqli_query($con, $sqlU) or die();
+    $regU = mysqli_fetch_array($resU)or die();
 ?>
 
     <div class="row">
@@ -18,7 +18,7 @@
           <div class="form-group">
             <label for="destinatario">Destinatario</label>
             <select name="destinatario" class="form-control">
-              <?php while($regUsuarios = mysql_fetch_array($resUsuarios)){ ?>
+              <?php while($regUsuarios = mysqli_fetch_array($resUsuarios)){ ?>
                 <option value="<?php echo $regUsuarios['correo']; ?>"> <?php echo $regUsuarios['nombre_usuario']." ".$regUsuarios['primer_apellido']." ".$regUsuarios['segundo_apellido']."&lt;".$regUsuarios['correo']."&gt;"; ?> </option>
               <?php } ?>
             </select>

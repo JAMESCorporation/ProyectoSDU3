@@ -3,8 +3,8 @@ require_once('header.php');
 if($valorSesion == 1){
   require_once("includes/conexion.php");
   $sql = "SELECT * FROM Usuario WHERE correo = '".$correo."'";
-  $res = mysql_query($sql,$con) or die(mysql_error());
-  $reg = mysql_fetch_array($res);
+  $res = mysqli_query($con, $sql) or die(mysqli_connect_error());
+  $reg = mysqli_fetch_array($res);
 ?>
 
       <div class="row ">
@@ -38,9 +38,9 @@ if($valorSesion == 1){
 
       <?php
         $sqlCursos = "SELECT * FROM Curso WHERE id_usuario = '".$reg['id_usuario']."'";
-        $resCursos = mysql_query($sqlCursos,$con);
+        $resCursos = mysqli_query($con, $sqlCursos);
 
-        if(mysql_num_rows($resCursos) > 0){
+        if(mysqli_num_rows($resCursos) > 0){
        ?>
       <div class="row">
         <div id="tutorial" class="">
@@ -69,7 +69,7 @@ if($valorSesion == 1){
               <div class="form-group">
                 <label for="cursos">Curso al que pertenece</label>
                 <select name="cursos" class="form-control">
-                  <?php while($reg_curso = mysql_fetch_array($resCursos)) { ?>
+                  <?php while($reg_curso = mysqli_fetch_array($resCursos)) { ?>
                     <option value="<?php echo $reg_curso['id_curso']; ?>"><?php echo $reg_curso['nombre_curso']; ?></option>
                   <?php	 } ?>
                 </select>

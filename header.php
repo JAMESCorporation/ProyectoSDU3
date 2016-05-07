@@ -65,7 +65,7 @@
 
           } else {
 					$sql_curso = "select * from usuarios as u, curso as c, curso_has_usuario cu where u.id_usuario = cu.id_usuario and c.id_curso = cu.id_curso and u.curso = $correo;";
-					$res_curso = mysql_query($sql_curso, $con);
+					$res_curso = mysqli_query( $con, $sql_curso);
 					 ?>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">

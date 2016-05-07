@@ -2,7 +2,7 @@
 require_once('header.php');
 $id_curso = $_GET['id_curso'];
 $sql_tuto = "select * from Tutorial, Curso where Tutorial.id_curso = $id_curso and Curso.id_curso = $id_curso";
-$res_tuto = mysql_query($sql_tuto,$con);
+$res_tuto = mysqli_query($con, $sql_tuto);
 ?>
 
   <table class="table table-hover">
@@ -18,7 +18,7 @@ $res_tuto = mysql_query($sql_tuto,$con);
       </th>
     </tr>
 
-    <?php while($reg_tuto = mysql_fetch_array($res_tuto)){
+    <?php while($reg_tuto = mysqli_fetch_array($res_tuto)){
         ?>
       <tr onclick="document.location.href = 'tutoriales.php?id_curso=<?php echo $reg_tuto['id_curso'];?>&id_tutorial=<?php echo $reg_tuto['id_tutorial']; ?>'">
         <td>

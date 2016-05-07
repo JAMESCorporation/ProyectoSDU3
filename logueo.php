@@ -5,14 +5,14 @@ require_once('includes/conexion.php');
 	$email = $_POST['email'];
 	$pass = $_POST['pass'];
 	$sql = "SELECT * FROM Usuario WHERE correo = '$email'";
-	$res = mysql_query($sql,$con);
+	$res = mysqli_query($con, $sql);
 
-if(mysql_num_rows($res) == 0) {
+if(mysqli_num_rows($res) == 0) {
 	echo "<script type='text/javascript'>".
 	"alert('Correo no encontrado');".
 	"document.location.href = 'index.php';</script>";
 }else {
-	$reg = mysql_fetch_array($res) or die("Error al convertir en registros");
+	$reg = mysqli_fetch_array($res) or die("Error al convertir en registros");
 			if($reg['pass'] == md5($pass)){
 
 				$_SESSION['email'] = $email;

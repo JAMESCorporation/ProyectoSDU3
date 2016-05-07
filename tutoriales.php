@@ -6,12 +6,12 @@ if(!$_GET){
 	$curso = $_GET['id_curso'];
 	$tutorial = $_GET['id_tutorial'];
 	$sql = "SELECT * FROM Tutorial WHERE Tutorial.id_tutorial = '$tutorial' and Tutorial.id_curso = '$curso'";
-	$res = mysql_query($sql,$con) or die("Error consultando: ".mysql_error());
-	$reg = mysql_fetch_array($res) or die("Error al convertir los registros");
+	$res = mysqli_query($con, $sql) or die("Error consultando: ".mysqli_connect_error());
+	$reg = mysqli_fetch_array($res) or die("Error al convertir los registros");
 
 	$sql2 = "SELECT * FROM Curso WHERE id_curso = '$curso'";
-	$res2 = mysql_query($sql2,$con) or die("Error consultando: ".mysql_error());
-	$reg2 = mysql_fetch_array($res2) or die("Error al convertir los registros");
+	$res2 = mysqli_query($con, $sql2) or die("Error consultando: ".mysqli_connect_error());
+	$reg2 = mysqli_fetch_array($res2) or die("Error al convertir los registros");
 ?>
 
     <div class="row">
@@ -66,8 +66,8 @@ if(!$_GET){
 					if(isset($_SESSION['email'])){
 						$correo = $_SESSION['email'];
 						$sql_idU = "select id_usuario from Usuario where correo = '$correo'";
-						$res_idU = mysql_query($sql_idU,$con);
-						$reg_idU = mysql_fetch_array($res_idU);
+						$res_idU = mysqli_query($con, $sql_idU);
+						$reg_idU = mysqli_fetch_array($res_idU);
 						$id_usuario = $reg_idU['0'];
 					 ?>
           <form action="comentarios.php" method="post" class="form-horizontal" role="form">
@@ -93,22 +93,22 @@ if(!$_GET){
     <?php
 
 				$sql_comentario = "select * from Comentario, Tutorial where Comentario.id_tutorial = $tutorial and Tutorial.id_tutorial = $tutorial order by Comentario.fecha desc";
-				$res_comentario = mysql_query($sql_comentario,$con);
+				$res_comentario = mysqli_query($con, $sql_comentario);
 				 ?>
       <div class="row">
 
         <?php
-				if(mysql_num_rows($res_comentario) > 0){
+				if(mysqli_num_rows($res_comentario) > 0){
 
-				while($reg_comentario = mysql_fetch_array($res_comentario)){
+				while($reg_comentario = mysqli_fetch_array($res_comentario)){
 					?>
           <div class="panel panel-default col-md-8 col-md-offset-2">
             <?php
 					$id_u = $reg_comentario['id_usuario'];
 					$id_c = $reg_comentario['id_comentario'];
 					$sql_u = "select u.nombre_usuario from Usuario as u, Comentario as c where u.id_usuario = $id_u and c.id_usuario = $id_u and c.id_comentario = $id_c";
-					$res_u = mysql_query($sql_u,$con) or die(mysql_error());
-					$reg_u = mysql_fetch_array($res_u) or die(mysql_error());
+					$res_u = mysqli_query($con, $sql_u) or die(mysqli_connect_error());
+					$reg_u = mysqli_fetch_array($res_u) or die(mysqli_connect_error());
 					$nombre_usuario = $reg_u['0'];
 					echo $nombre_usuario." (".$reg_comentario['fecha'].")- ".$reg_comentario['comentario'];
 					?>

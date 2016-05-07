@@ -3,8 +3,8 @@
 require_once("header.php");
 
 $sql_curso = "select * from Curso, Usuario where Usuario.id_usuario = Curso.id_usuario";
-$res_curso = mysql_query($sql_curso, $con) or die(mysql_error());
-$res_cu = mysql_query($sql_curso, $con) or die(mysql_error());
+$res_curso = mysqli_query($con, $sql_curso) or die(mysqli_connect_error());
+$res_cu = mysqli_query($con, $sql_curso) or die(mysqli_connect_error());
 ?>
 
 
@@ -28,7 +28,7 @@ $res_cu = mysql_query($sql_curso, $con) or die(mysql_error());
 						</th>
 					</tr>
 
-					  <?php while($reg_cu = mysql_fetch_array($res_cu)){
+					  <?php while($reg_cu = mysqli_fetch_array($res_cu)){
 						?>
 					<tr onclick="javascript:document.location.href = 'listaTutoriales.php?id_curso=<?php echo $reg_cu['id_curso']; ?>'">
 						<td >
@@ -44,8 +44,8 @@ $res_cu = mysql_query($sql_curso, $con) or die(mysql_error());
 
 							<?php
 								$sql_tu = "SELECT * FROM Tutorial WHERE id_curso = '".$reg_cu['id_curso']."'";
-								$res_tu = mysql_query($sql_tu,$con)or die(mysql_error());
-							 	echo mysql_num_rows($res_tu);
+								$res_tu = mysqli_query($con, $sql_tu)or die(mysqli_connect_error());
+							 	echo mysqli_num_rows($res_tu);
 							  ?>
 						</td>
 					</tr>
