@@ -16,15 +16,16 @@
   <meta charset="utf-8">
   <title>JAMES Courses</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="includes/bootstrap/dist/css/style.css">
+      
+      <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.css">
+      <link rel="stylesheet" href="includes/bootstrap/dist/css/style.css">
 </head>
 
 <body>
   <!-- Fixed navbar -->
-  <div class="container">
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  
+    <div class="navbar navbar-inverse transparent navbar-fixed-top" id="header-general" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -42,19 +43,19 @@
           <ul class="nav navbar-nav">
             <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
             <li><a href="curso.php">Cursos</a></li>
-            <li><a href="quiensomos.php">¿Quiénes somos?</a></li>
+            <li><a href="quiensomos.php">Enseñar</a></li>
             <li><a href="contacto.php">Contacto</a></li>
           </ul>
 
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right ">
             <li>
-              <button type="button" class="botn botn-primary botn-lg outline" data-toggle="modal" data-target="#myModal2">
+              <button type="button" class="botn botn-primary botn-lg outline" data-toggle="modal" data-target="#myModal2" >
                 <span class="glyphicon glyphicon-edit"></span> Registrate
               </button>
               <!-- <a href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a> -->
             </li>
             <li>
-              <button type="button" class="botn botn-primary botn-lg outline" data-toggle="modal" data-target="#myModal">
+              <button type="button" class="botn botn-primary botn-lg outline" data-toggle="modal" data-target="#myModal" >
                 <span class="glyphicon glyphicon-log-in"></span> Log in
               </button>
               <!-- <a href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a> -->

@@ -7,6 +7,7 @@ $res_curso = mysqli_query($con, $sql_curso) or die(mysqli_connect_error());
 $res_cu = mysqli_query($con, $sql_curso) or die(mysqli_connect_error());
 ?>
 
+<div class="container">
 
   <h2 class = "text-primary">Lista de cursos</h2>
 
@@ -52,7 +53,7 @@ $res_cu = mysqli_query($con, $sql_curso) or die(mysqli_connect_error());
 					<?php }
 					?>
 				</table>
-
+</div>
 				<?php
 				require_once("footer.php");
 				 ?>

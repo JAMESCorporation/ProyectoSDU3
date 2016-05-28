@@ -1,6 +1,7 @@
 <?php
 require_once('header.php');
 ?>
+<div class="container">
       <div class="col-sm-7">
         <h1>Dejanos un mensaje</h1>
         <br>
@@ -63,7 +64,7 @@ require_once('header.php');
         </div>
 
       </div>
-
+</div>
       <?php
       require_once('footer.php');
       ?>
