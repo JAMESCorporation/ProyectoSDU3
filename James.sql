@@ -18,6 +18,8 @@ CREATE TABLE Usuario (
   tipo INT NULL,
   PRIMARY KEY (id_usuario));
 
+INSERT INTO Usuario VALUES (null,'Efren','Cruz','San Felipe','7121015229','efren@gmail.com',md5('efren'),'1994-10-24',1);
+
 -- -----------------------------------------------------
 -- Tabla - Categoria
 -- -----------------------------------------------------
@@ -25,6 +27,8 @@ CREATE TABLE Categoria (
   id_categoria INT NOT NULL AUTO_INCREMENT,
   nombre_categoria VARCHAR(60) NOT NULL,
   PRIMARY KEY (id_categoria));
+
+INSERT INTO Categoria VALUES (null,'Tecnología');
 
 -- -----------------------------------------------------
 -- Tabla - Curso
@@ -39,16 +43,7 @@ CREATE TABLE Curso (
   tipo_imagen varchar(50),
   PRIMARY KEY (id_curso));
 
--- -----------------------------------------------------
--- Tabla - Comentario
--- -----------------------------------------------------
-CREATE TABLE Comentario (
-  id_comentario INT NOT NULL AUTO_INCREMENT,
-  comentario VARCHAR(200) NOT NULL,
-  fecha TIMESTAMP NULL,
-  id_usuario INT NOT NULL,
-  PRIMARY KEY (id_comentario, id_usuario),
-  FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario));
+INSERT INTO Curso VALUES (null,'Android','Aquí veremos Android',100.0,'2016-05-21',null,null);
 
 -- -----------------------------------------------------
 -- Tabla - Tutorial
@@ -60,12 +55,27 @@ CREATE TABLE Tutorial (
   visitas INT NULL DEFAULT 0,
   `like` INT NULL DEFAULT 0,
   tipo INT NULL,
-  tiempo TIMESTAMP NULL,
+  fecha_creacion TIMESTAMP NULL,
   id_curso INT NOT NULL,
-  id_comentario INT NOT NULL,
-  PRIMARY KEY (id_tutorial, id_curso, id_comentario),
-  FOREIGN KEY (id_curso) REFERENCES Curso (id_curso),
-  FOREIGN KEY (id_comentario) REFERENCES Comentario (id_comentario));
+  PRIMARY KEY (id_tutorial, id_curso),
+  FOREIGN KEY (id_curso) REFERENCES Curso (id_curso));
+
+INSERT INTO Tutorial VALUES (null,'01 - Qué es Android?','Conceptos básicos sobre Android',0,0,0,now(),1);
+
+-- -----------------------------------------------------
+-- Tabla - Comentario
+-- -----------------------------------------------------
+CREATE TABLE Comentario (
+  id_comentario INT NOT NULL AUTO_INCREMENT,
+  comentario VARCHAR(200) NOT NULL,
+  fecha TIMESTAMP NULL,
+  id_usuario INT NOT NULL,
+  id_tutorial INT NOT NULL,
+  PRIMARY KEY (id_comentario, id_usuario),
+  FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario),
+  FOREIGN KEY (id_tutorial) REFERENCES Tutorial (id_tutorial));
+
+INSERT INTO Comentario VALUES (null,'Excelente la explicación',now(),1,1);
 
 -- -----------------------------------------------------
 -- Tabla - Pago
@@ -130,6 +140,8 @@ CREATE TABLE Categoria_has_Curso (
   PRIMARY KEY (id_categoria, id_curso),
   FOREIGN KEY (id_categoria) REFERENCES Categoria (id_categoria),
   FOREIGN KEY (id_curso) REFERENCES Curso (id_curso));
+
+INSERT INTO Categoria_has_Curso VALUES (1,1);
 
 -- -----------------------------------------------------
 -- Tabla - Usuario_has_Test
