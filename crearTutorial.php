@@ -43,6 +43,8 @@
         } else {
             echo "Formato de archivo no permitido o excede el tamaño límite de $limite_kb Kbytes.";
         }
+
+        header("Location: home.php#tutorial");
       }
 
       
