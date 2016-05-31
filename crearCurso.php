@@ -55,6 +55,7 @@
       
       $sql = "INSERT INTO Usuario_has_Curso VALUES ('$id_usuario','$id_curso',1)";      
       $resultado = mysqli_query($con, $sql) or die("Hubo un error al insertar".mysqli_error($con));
+      header("Location: home.php#tutorial");
     }
   }
  ?>
