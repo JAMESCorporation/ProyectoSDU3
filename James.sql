@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS `James`.`Curso` (
   `descripcion_curso` TEXT NULL,
   `costo` FLOAT NOT NULL DEFAULT 0.0,
   `fecha_inicio` DATE NOT NULL,
+  `imagen` longblob,
+  `tipo_imagen` varchar(50),
   PRIMARY KEY (`id_curso`))
 ENGINE = InnoDB;
 
