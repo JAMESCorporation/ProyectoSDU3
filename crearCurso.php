@@ -49,16 +49,12 @@
       
 
       $sqlCurso = "SELECT id_curso FROM Curso ORDER BY id_curso desc limit 0,1";
-      $resCurso = mysqli_query($con, $sqlCurso) or die("Error obteniendo el curso: ".mysqli_connect_error());
+      $resCurso = mysqli_query($con, $sqlCurso) or die("Error obteniendo el curso: ".mysqli_error($con));
       $regCurso = mysqli_fetch_array($resCurso);
       $id_curso = $regCurso['id_curso'];
       
       $sql = "INSERT INTO Usuario_has_Curso VALUES ('$id_usuario','$id_curso',1)";      
-      $resultado = mysqli_query($con, $sql) or die("Hubo un error al insertar".mysqli_connect_error());
-
-      mkdir("cursos/".$id_curso, 0755) or die();
-
-      header("Location: home.php#tutorial");
+      $resultado = mysqli_query($con, $sql) or die("Hubo un error al insertar".mysqli_error($con));
     }
   }
  ?>
