@@ -12,18 +12,33 @@ if($valorSesion == 1){
           <div class="col-md-8 col-md-offset-2">
             <legend><h2>Crear nuevo curso</h2></legend>
 
-            <form action="crearCurso.php" method="post">
+            <form action="crearCurso.php" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="nombre">Nombre del curso: </label>
                 <input type="text" name="nombre" class="form-control" placeholder="Ingresa el nombre del curso" </input>
               </div>
               <div class="form-group">
                 <label for="nombreAsesor">Nombre del asesor: </label>
-                <input type="text" name="nombreAsesor" class="form-control" <?php echo "value='".$reg[ 'nombre_usuario']. " ".$reg[ 'primer_apellido']. " ".$reg[ 'segundo_apellido']. "'"; ?> placeholder="¿Quien impartira este curso?">
+                <input type="text" name="nombreAsesor" class="form-control" <?php echo "value='".$reg[ 'nombre']. " ".$reg['apellidos']."'"; ?> placeholder="¿Quien impartira este curso?">
               </div>
               <div class="form-group">
                 <label for="descripcion">Descripción: </label>
                 <textarea name="descripcion" class="form-control" placeholder="¿De que tratará el curso?"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="nombre">Fecha inicio: </label>
+                <input type="text" name="fecha_inicio" class="form-control" placeholder="..." </input>
+              </div>
+
+              <div class="form-group">
+                <label for="nombre">Costo: </label>
+                <input type="text" name="costo" class="form-control" placeholder="..." </input>
+              </div>
+
+              <div class="form-group">
+                <label for="imagen">Portada: </label>
+                <input name='imagen' type='file'  id='imagen'  multiple>
               </div>
               <!--<div class="form-group">
                     <label for="correo">Email</label>

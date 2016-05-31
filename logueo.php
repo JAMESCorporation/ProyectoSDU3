@@ -11,7 +11,7 @@ if(mysqli_num_rows($res) == 0) {
 	echo "<script type='text/javascript'>".
 	"alert('Correo no encontrado');".
 	"document.location.href = 'index.php';</script>";
-}else {
+}else{
 	$reg = mysqli_fetch_array($res) or die("Error al convertir en registros");
 			if($reg['password'] == md5($pass)){
 
