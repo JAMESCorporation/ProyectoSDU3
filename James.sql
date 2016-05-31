@@ -266,7 +266,7 @@ ENGINE = InnoDB;
 -- Table `James`.`Test`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `James`.`Test` (
-  `id_test` INT NOT NULL,
+  `id_test` INT NOT NULL AUTO_INCREMENT,
   `id_tutorial` INT NOT NULL,
   PRIMARY KEY (`id_test`, `id_tutorial`),
   INDEX `fk_Test_Tutorial1_idx` (`id_tutorial` ASC),
@@ -282,7 +282,7 @@ ENGINE = InnoDB;
 -- Table `James`.`Pregunta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `James`.`Pregunta` (
-  `id_pregunta` INT NOT NULL,
+  `id_pregunta` INT NOT NULL AUTO_INCREMENT,
   `pregunta` VARCHAR(300) NOT NULL,
   `id_test` INT NOT NULL,
   PRIMARY KEY (`id_pregunta`, `id_test`),
@@ -299,11 +299,11 @@ ENGINE = InnoDB;
 -- Table `James`.`Respuesta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `James`.`Respuesta` (
-  `id_respuesta` INT NOT NULL,
-  `respuesta` VARCHAR(300) NOT NULL DEFAULT '',
+  `id_respuesta` INT NOT NULL AUTO_INCREMENT,
+  `respuesta` VARCHAR(300) NOT NULL,
   `correcta` INT NOT NULL,
   `id_pregunta` INT NOT NULL,
-  PRIMARY KEY (`id_pregunta`),
+  PRIMARY KEY (`id_respuesta`),
   CONSTRAINT `fk_Respuesta_Pregunta1`
     FOREIGN KEY (`id_pregunta`)
     REFERENCES `James`.`Pregunta` (`id_pregunta`)
