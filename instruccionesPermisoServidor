@@ -1,9 +1,6 @@
 
 
 chown -R www-data:www-data /var/www/html/ProyectoSDU3/cursos/
-
-
-
 chmod -R g+rw /var/www/html/ProyectoSDU3/cursos/
 
 

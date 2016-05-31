@@ -7,7 +7,7 @@ if ($_GET['id'] > 0)
     $id = $_GET['id'];
     // Consulta de búsqueda de la imagen.
     $sql = "SELECT imagen, tipo_imagen FROM Curso WHERE id_curso='$id'";
-    $resultado = mysqli_query($con, $sql) or die(mysql_error());
+    $resultado = mysqli_query($con, $sql) or die(mysqli_connect_error());
     $datos = mysqli_fetch_array($resultado);
  
     $imagen = $datos['imagen']; // Datos binarios de la imagen.
