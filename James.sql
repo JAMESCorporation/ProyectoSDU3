@@ -19,6 +19,7 @@ CREATE TABLE Usuario (
   PRIMARY KEY (id_usuario));
 
 INSERT INTO Usuario VALUES (null,'Efren','Cruz','San Felipe','7121015229','efren@gmail.com',md5('efren'),'1994-10-24',1);
+INSERT INTO Usuario VALUES (null,'Saúl','Gómez Navarrete','Jocotitlán','7121675322','minsau2@gmail.com',md5('saul'),'1994-03-11',1);
 
 -- -----------------------------------------------------
 -- Tabla - Categoria
@@ -124,11 +125,9 @@ CREATE TABLE Usuario_has_Curso (
   id_usuario INT NOT NULL,
   id_curso INT NOT NULL,
   estado INT NOT NULL,
-  id_pago INT NOT NULL,
-  PRIMARY KEY (id_usuario, id_curso, id_pago),
+  PRIMARY KEY (id_usuario, id_curso),
   FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario),
-  FOREIGN KEY (id_curso) REFERENCES Curso (id_curso),
-  FOREIGN KEY (id_pago) REFERENCES Pago (id_pago));
+  FOREIGN KEY (id_curso) REFERENCES Curso (id_curso));
 
 
 -- -----------------------------------------------------

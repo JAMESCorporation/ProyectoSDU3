@@ -19,26 +19,26 @@ if($valorSesion == 1){
               </div>
               <div class="form-group">
                 <label for="nombreAsesor">Nombre del asesor: </label>
-                <input type="text" name="nombreAsesor" class="form-control" <?php echo "value='".$reg[ 'nombre']. " ".$reg['apellidos']."'"; ?> placeholder="¿Quien impartira este curso?">
+                <input type="text" name="nombreAsesor" class="form-control" <?php echo "value='".$reg[ 'nombre']. " ".$reg['apellidos']."'"; ?> placeholder="¿Quien impartira este curso?" readonly>
               </div>
               <div class="form-group">
                 <label for="descripcion">Descripción: </label>
-                <textarea name="descripcion" class="form-control" placeholder="¿De que tratará el curso?"></textarea>
+                <textarea name="descripcion" class="form-control" placeholder="¿De que tratará el curso?" required></textarea>
               </div>
 
               <div class="form-group">
                 <label for="nombre">Fecha inicio: </label>
-                <input type="text" name="fecha_inicio" class="form-control" placeholder="..." </input>
+                <input type="text" name="fecha_inicio" class="form-control" placeholder="..." required />
               </div>
 
               <div class="form-group">
                 <label for="nombre">Costo: </label>
-                <input type="text" name="costo" class="form-control" placeholder="..." </input>
+                <input type="text" name="costo" class="form-control" placeholder="..." required />
               </div>
 
               <div class="form-group">
                 <label for="imagen">Portada: </label>
-                <input name='imagen' type='file'  id='imagen'  multiple>
+                <input name='imagen' type='file'  id='imagen'  multiple required>
               </div>
               <!--<div class="form-group">
                     <label for="correo">Email</label>
@@ -52,7 +52,7 @@ if($valorSesion == 1){
       </div>
 
       <?php
-        $sqlCursos = "SELECT * FROM Curso WHERE id_usuario = '".$reg['id_usuario']."'";
+        $sqlCursos = "SELECT * FROM Curso as a, Usuario as b, Usuario_has_Curso as c WHERE b.id_usuario = '".$reg['id_usuario']."' and a.id_curso = c.id_curso and b.id_usuario = c.id_usuario";
         $resCursos = mysqli_query($con, $sqlCursos);
 
         if(mysqli_num_rows($resCursos) > 0){
@@ -65,21 +65,16 @@ if($valorSesion == 1){
             <!--<form action="crearTutorial.php" method="post">-->
               <div class="form-group">
                 <label for="nombre">Nombre del tutorial: </label>
-                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="nombre del tutorial">
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre del tutorial">
               </div>
               <div class="form-group">
                 <label for="descripcion">Descripción: </label>
-                <input type="text" name="descripcion" class="form-control" id="descripcion"placeholder="descripcion">
+                <input type="text" name="descripcion" class="form-control" id="descripcion"placeholder="Descripcion">
               </div>
 
               <div class="form-group">
-                <label for="archivos">Recursos del Tutorial</label>
-                <input name='archivos[0]' type='file'  id='archivos' accept="video/mp4" multiple>
-                <div class="" id="recursos">
-
-                </div>
-                <a  id="agregar"> + Agregar otro Recurso </a>
-                <!--<input type="file" multiple="multiple" name="archivos" id="archivos" >-->
+                <label for="video">Video:</label>
+                <input name='video' type='file'  id='video' accept="video/mp4" multiple>
               </div>
               <div class="form-group">
                 <label for="cursos">Curso al que pertenece</label>
