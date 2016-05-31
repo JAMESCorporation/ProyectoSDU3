@@ -20,6 +20,7 @@
       <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.min.css">
       <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.css">
       <link rel="stylesheet" href="includes/bootstrap/dist/css/style.css">
+      <link rel="stylesheet" href="includes/animations.css">
 </head>
 
 <body>

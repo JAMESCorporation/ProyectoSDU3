@@ -6,8 +6,8 @@
   </footer>
 	<script type="text/javascript" src="includes/bootstrap/dist/js/jquery.js"></script>
 	<script type="text/javascript" src="includes/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="includes/bootstrap/dist/js/footer.js"></script>
   <script type="text/javascript" src="includes/jquery-ui/jquery-ui.js"></script>
+  <script type="text/javascript" src="includes/effects.js"></script>
   <script type="text/javascript">
   	
   </script>
