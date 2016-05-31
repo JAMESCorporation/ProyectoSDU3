@@ -53,6 +53,8 @@ CREATE TABLE Tutorial (
   id_tutorial INT NOT NULL AUTO_INCREMENT,
   nombre_tutorial VARCHAR(45) NOT NULL,
   descripcion_tutorial VARCHAR(45) NULL,
+  video longblob NOT NULL,
+  tipo_video varchar(50),
   visitas INT NULL DEFAULT 0,
   `like` INT NULL DEFAULT 0,
   tipo INT NULL,
@@ -61,7 +63,6 @@ CREATE TABLE Tutorial (
   PRIMARY KEY (id_tutorial, id_curso),
   FOREIGN KEY (id_curso) REFERENCES Curso (id_curso));
 
-INSERT INTO Tutorial VALUES (null,'01 - Qué es Android?','Conceptos básicos sobre Android',0,0,0,now(),1);
 
 -- -----------------------------------------------------
 -- Tabla - Comentario
@@ -76,7 +77,7 @@ CREATE TABLE Comentario (
   FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario),
   FOREIGN KEY (id_tutorial) REFERENCES Tutorial (id_tutorial));
 
-INSERT INTO Comentario VALUES (null,'Excelente la explicación',now(),1,1);
+
 
 -- -----------------------------------------------------
 -- Tabla - Pago

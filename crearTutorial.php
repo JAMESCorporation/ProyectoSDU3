@@ -10,66 +10,43 @@
       $nombre = $_POST['nombre'];
       $descripcion = $_POST['descripcion'];
       $curso = $_POST['cursos'];
-      $directorioCurso = "cursos/".$curso;
-      echo $directorioCurso."<br />";
+
       $sqlUser = "SELECT id_usuario FROM Usuario WHERE correo = '".$_SESSION['email']."'";
       $resUser = mysqli_query($con, $sqlUser);
       $regUser = mysqli_fetch_array($resUser);
+      //$sql = "INSERT INTO Tutorial VALUES (null,'$nombre','$descripcion',".($regCurso['noTutorial']+1).",'$curso')";
+      //$res = mysqli_query($con, $sql) or die("Hubo un error al guardar el tutorial: ".mysqli_connect_error());
 
-      $sqlCurso = "SELECT count(id_curso ) as noTutorial FROM Tutorial WHERE id_curso='".$curso."'";
-      $resCurso = mysqli_query($con, $sqlCurso) or die("Error obteniendo el curso: ".mysqli_connect_error());
-      $regCurso = mysqli_fetch_array($resCurso);
-
-      $directorioTutorial = $directorioCurso."/".($regCurso['noTutorial']+1)."/";
-      echo $directorioTutorial."<br />";
-      mkdir($directorioTutorial, 0755) or die();
-      //echo "INSERT INTO Tutorial VALUES (null,'$nombre','$descripcion',".($regCurso['noTutorial']+1).")";
-      $sql = "INSERT INTO Tutorial VALUES (null,'$nombre','$descripcion',".($regCurso['noTutorial']+1).",'$curso')";
-      $res = mysqli_query($con, $sql) or die("Hubo un error al guardar el tutorial: ".mysqli_connect_error());
-
-      $sqlTuto = "SELECT id_tutorial FROM Tutorial ORDER BY id_tutorial desc limit 0,1";
-      $resTuto = mysqli_query($con, $sqlTuto) or die("Error obteniendo el curso: ".mysqli_connect_error());
-      $regTuto = mysqli_fetch_array($resTuto);
-
-      if ($_FILES['archivos']) {
-        $file_ary = reArrayFiles($_FILES['archivos']);
-        $counter = 1;
-        foreach ($file_ary as $file) {
-          if ($counter == 1) {
-            $ficheroSubida = $directorioTutorial.basename($regTuto['id_tutorial'].".mp4");
-            $counter++;
-          }else{
-            $ficheroSubida = $directorioTutorial.basename($file['name']);
-          }
-          if(move_uploaded_file($file['tmp_name'], $ficheroSubida)){
-            echo "Recurso cargado satisfactoriamente";
-            $sqlRecurso = "INSERT INTO Recurso VALUES (null,'".$file['name']."',".$regTuto['id_tutorial'].")";
-            $resRecurso = mysqli_query($con, $sqlRecurso) or die("Error al guardar registro del recurso: ".mysqli_connect_error());
-          }else{
-            echo "Algo salio mal al subir el fichero";
-          }
+      if (!isset($_FILES["video"]) || $_FILES["video"]["error"] > 0){
+          echo "Ha ocurrido un error.";
+      } else {
+        $permitidos = array("video/mp4", "video/h264", "video/mpeg", "video/ogg");
+        $limite_kb = 204800; 
+        if (in_array($_FILES['video']['type'], $permitidos) && $_FILES['video']['size'] <= $limite_kb * 1024){
+               
+            $video_temporal = $_FILES['video']['tmp_name'];
+            $tipo = $_FILES['video']['type'];
+            $fp = fopen($video_temporal, 'r+b');
+            $data = fread($fp, filesize($video_temporal));
+            fclose($fp);
+            $data = mysqli_real_escape_string($con,$data);
+            $sql = "INSERT INTO Tutorial VALUES (null,'$nombre','$descripcion','$data','$tipo',0,0,0,now(),'$curso')";
+            $resultado = mysqli_query($con, $sql) or die("Error al enviar datos".mysqli_error($con));
+            if ($resultado)
+            {
+                echo "El archivo ha sido copiado exitosamente.";
+            }
+            else
+            {
+                echo "Ocurrió algun error al copiar el archivo.";
+            }
+        } else {
+            echo "Formato de archivo no permitido o excede el tamaño límite de $limite_kb Kbytes.";
         }
-        header("Location: home.php#tutorial");
-      }else{
-        echo "Hubo un error al recibir  los archivos, introduzca al menos un video";
       }
 
-
+      
     }
   }
 
-  function reArrayFiles(&$file_post) {
-
-    $file_ary = array();
-    $file_count = count($file_post['name']);
-    $file_keys = array_keys($file_post);
-
-    for ($i=0; $i<$file_count; $i++) {
-        foreach ($file_keys as $key) {
-            $file_ary[$i][$key] = $file_post[$key][$i];
-        }
-    }
-
-    return $file_ary;
-}
  ?>
