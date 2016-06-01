@@ -4,9 +4,9 @@
 	$i = 0;
 	$id_tuto = 1;
 	$sql_test = "INSERT INTO Test VALUES (null,$id_tuto)";
-	$res_test = mysqli_query($con, $sql_test) or die (mysqli_connect_error());
+	$res_test = mysqli_query($con, $sql_test) or die (mysqli_error($con));
 	$sql_id_test = "select id_test from Test order by id_test desc limit 1";
-	$res_id_test = mysqli_query($con, $sql_id_test) or die(mysqli_connect_error());
+	$res_id_test = mysqli_query($con, $sql_id_test) or die(mysqli_error($con));
 	$reg_id_test = mysqli_fetch_array($res_id_test);
 	$id_test = $reg_id_test['0'];
 ?>

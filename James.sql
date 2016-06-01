@@ -29,7 +29,10 @@ CREATE TABLE Categoria (
   nombre_categoria VARCHAR(60) NOT NULL,
   PRIMARY KEY (id_categoria));
 
-INSERT INTO Categoria VALUES (null,'Tecnología');
+INSERT INTO Categoria VALUES (null,'Redes');
+INSERT INTO Categoria VALUES (null,'Idiomas');
+INSERT INTO Categoria VALUES (null,'Programación');
+INSERT INTO Categoria VALUES (null,'Base de Datos');
 
 -- -----------------------------------------------------
 -- Tabla - Curso
