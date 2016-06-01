@@ -16,7 +16,7 @@ if(mysqli_num_rows($res) == 0) {
 			if($reg['password'] == md5($pass)){
 
 				$_SESSION['email'] = $email;
-				header("Location: home.php");
+				header("Location: curso.php");
 			}else{
 				echo "<script type='text/javascript'>".
 				"alert('Contraseña incorrecta');".

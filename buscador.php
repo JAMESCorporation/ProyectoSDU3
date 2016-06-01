@@ -55,19 +55,30 @@ session_start();
 		  	while($regCursos = mysqli_fetch_array($resCursos)){
 		  ?>
  			 <div class="col-md-3 col-lg-3">
- 				<div class="thumbnail">
+ 				<div class="thumbnail curso">
 		      	  <img src="obtenerimagen.php?id=<?php echo $regCursos['id_curso']; ?>"/>
 			      <div class="caption">
 		        	<h3><?php echo $regCursos['nombre_curso']; ?></h3>
 		        	<p><?php echo $regCursos['descripcion_curso']; ?></p>
 		        	<p class="text-right"><a href="listaTutoriales.php?id_curso=<?php echo $regCursos['id_curso']; ?>" class="btn btn-primary" role="button">Ver</a>
-		        	<a href="#" class="btn btn-success" role="button"><?php
-		        	if($regCursos['costo'] == 0){
-		        	 	echo "Gratis"; 
-		        	}else{
-		        		echo "$".$regCursos['costo'];
-		        	}?>
-		        	</a></p>
+		        	<?php
+						if($valorSesion == -1){
+					?>
+							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" > Inicia Sesión </button>
+					<?php
+						} else {
+					?>
+
+			        	<a href="comprar.php?id_curso=<?php echo $regCursos['id_curso']; ?>" class="btn btn-success" role="button"><?php
+			        	if($regCursos['costo'] == 0){
+			        	 	echo "Gratis"; 
+			        	}else{
+			        		echo "$".$regCursos['costo'];
+			        	}?>
+			        	</a>
+			        <?php
+			        	}
+					?></p>
 		      	  </div>
 		    	</div>
 		 	 </div>

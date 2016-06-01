@@ -57,7 +57,7 @@
             </li>
             <li>
               <button type="button" class="botn botn-primary botn-lg outline" data-toggle="modal" data-target="#myModal" >
-                <span class="glyphicon glyphicon-log-in"></span> Log in
+                <span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión
               </button>
               <!-- <a href="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a> -->
             </li>

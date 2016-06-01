@@ -129,7 +129,7 @@ CREATE TABLE Usuario_has_Curso (
   id_usuario INT NOT NULL,
   id_curso INT NOT NULL,
   estado INT NOT NULL,
-  PRIMARY KEY (id_usuario, id_curso),
+  PRIMARY KEY (id_usuario, id_curso, estado),
   FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario),
   FOREIGN KEY (id_curso) REFERENCES Curso (id_curso));
 
