@@ -12,6 +12,55 @@
   	
   </script>
   
+  <script>
+
+     
+
+    var i = 0;
+  
+
+      $("#agregar").click(function(){
+        var pregunta = document.getElementById("pregunta").value;
+        var res1 = document.getElementById("res1").value;
+        var res2 = document.getElementById("res2").value;
+        var res3 = document.getElementById("res3").value;
+        var res = document.getElementsByName("res");
+        for(var con=0; con<3; con++){
+          if(res[con].checked){
+            var correcta = con+1;;
+          }
+        }
+        $.ajax({
+        url: 'nueva_pregunta.php',
+        type: 'POST',
+        data: {'pregunta':pregunta,'res1':res1,'res2':res2,'res3':res3, 'correcta':correcta},
+        }); 
+
+        i = i + 1;
+
+        if(correcta == 1){
+          $("#mostrar").append("<h4>"+i+".- "+pregunta+"</h4>");
+          $("#mostrar").append("<label class='text-primary'> a) "+res1+"</label><br>");
+          $("#mostrar").append("<p> b) "+res2+"</p>");
+          $("#mostrar").append("<p> c) "+res3+"</p><legend></legend>");
+        }
+        if(correcta == 2){
+          $("#mostrar").append("<h3>"+i+".- "+pregunta+"</h3>");
+          $("#mostrar").append("<p> a) "+res1+"</p>");
+          $("#mostrar").append("<label> b) "+res2+"</label><br>");
+          $("#mostrar").append("<p> c) "+res3+"</p><legend></legend>");
+        }
+        if(correcta == 3){
+          $("#mostrar").append("<h3>"+i+".- "+pregunta+"</h3>");
+          $("#mostrar").append("<p> a) "+res1+"</p>");
+          $("#mostrar").append("<p> b) "+res2+"</p>");
+          $("#mostrar").append("<label> c) "+res3+"</label><legend></legend>");
+          }
+
+      });
+   
+  </script>
+
 	<!--<script type="text/javascript" src="includes/bootstrap/dist/js/jquery.validate.js"></script>-->
 
 </body>
