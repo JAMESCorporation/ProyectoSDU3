@@ -257,7 +257,16 @@ a{
   top: 50%;
 }
 
+#cursosC{
+  margin-top: 20px;
+}
+
 #cursos{
-  margin-top: 10px;
+  margin-top: 20px;
+}
+
+#filtros{
+  
+  margin: auto;
   
 }
