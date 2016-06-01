@@ -23,10 +23,35 @@ if(!$_GET){
           <video controls>
             <source src="obtenervideo.php?id=<?php echo $reg['id_tutorial']; ?>" >
           </video>
+          <?php
+          if(isset($_SESSION['email'])){
+            $correo = $_SESSION['email'];
 
+            $sql_idU = "select id_usuario from Usuario where correo = '$correo'";
+            $res_idU = mysqli_query($con, $sql_idU);
+            $reg_idU = mysqli_fetch_array($res_idU);
+            $id_usuario = $reg_idU['0'];
+
+            $sql_estado = "SELECT estado from Usuario_has_Curso where id_usuario=$id_usuario and id_curso=$curso";
+            $res_estado = mysqli_query($con, $sql_estado);
+            $reg_estado = mysqli_fetch_array($res_estado);
+            $estado = $reg_estado['0'];
+          }
+           ?>
           <h3 class="text-danger">Descripción</h3>
           <div class="text-left">
             <a href='obtenervideo.php?id=<?php echo $reg['id_tutorial']; ?>' download='<?php echo $reg['nombre_tutorial']." - Curso ".$reg2['nombre_curso'] ?>' class='btn btn-default btn-download'> Descargar </a>
+            <?php 
+              if ($estado == 1) {
+            ?>
+            <a href='test.php?id_tutorial=<?php echo $reg['id_tutorial']; ?>&id_curso=<?php echo $curso; ?>' class='btn btn-default btn-download'> Crear cuestionario </a>
+            <?php 
+            } else {
+            ?>
+            <a href='cuestionario.php?id_tutorial=<?php echo $reg['id_tutorial']; ?>&id_curso=<?php echo $curso; ?>' class='btn btn-default btn-download'> Realizar cuestionario </a>
+            <?php 
+            }
+            ?>
           </div>
           <div class="text-right">
             Visitas
@@ -60,7 +85,7 @@ if(!$_GET){
             <br>
             <div class="form-group margin-bottom-sm">
               <div class="col-sm-offset-10 col-sm-10">
-                <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="submit" class="btn btn-default">Comentar</button>
               </div>
             </div>
           </form>
@@ -71,30 +96,33 @@ if(!$_GET){
     </div>
     <?php
 
-				$sql_comentario = "select * from Comentario, Tutorial where Comentario.id_tutorial = $tutorial and Tutorial.id_tutorial = $tutorial order by Comentario.fecha desc";
+				$sql_comentario = "select id_comentario, comentario, id_usuario, fecha from Comentario, Tutorial where Comentario.id_tutorial = $tutorial and Tutorial.id_tutorial = $tutorial order by Comentario.fecha desc";
 				$res_comentario = mysqli_query($con, $sql_comentario);
 				 ?>
       <div class="row">
+          <div class="panel panel-default col-md-8 col-md-offset-2">
 
         <?php
 				if(mysqli_num_rows($res_comentario) > 0){
 
 				while($reg_comentario = mysqli_fetch_array($res_comentario)){
 					?>
-          <div class="panel panel-default col-md-8 col-md-offset-2">
             <?php
 					$id_u = $reg_comentario['id_usuario'];
 					$id_c = $reg_comentario['id_comentario'];
-					$sql_u = "select u.nombre_usuario from Usuario as u, Comentario as c where u.id_usuario = $id_u and c.id_usuario = $id_u and c.id_comentario = $id_c";
+					$sql_u = "select u.nombre from Usuario as u, Comentario as c where u.id_usuario = $id_u and c.id_usuario = $id_u and c.id_comentario = $id_c";
 					$res_u = mysqli_query($con, $sql_u) or die(mysqli_connect_error());
 					$reg_u = mysqli_fetch_array($res_u) or die(mysqli_connect_error());
 					$nombre_usuario = $reg_u['0'];
-					echo $nombre_usuario." (".$reg_comentario['fecha'].")- ".$reg_comentario['comentario'];
-					?>
-          </div>
+          ?>
+          <legend>
+          <?php echo $reg_comentario['comentario']; ?>
+            <div class="text-right"> <h5><?php echo $nombre_usuario." - (".$reg_comentario['fecha'].")"; ?> </h5></div>
+          </legend>
           <?php
 				}
 			} else { ?>
+            </div>
             <div class="panel panel-default col-md-8 col-md-offset-2">
               <?php echo "No hay comentarios"; ?>
             </div>
