@@ -17,11 +17,8 @@
 	   <div class="col-md-8 col-md-offset-2">
 		<legend><h2>Comienza aquí tu cuestionario</h2></legend>
 		<legend><p>Escriba las preguntas y respuestas seleccionando la respuesta correcta</p></legend>
-		<form>
-			<div class="form-group">
-				<label></label>
+			<div id="mostrar" class="form-group">
 			</div>
-
             <div class="form-group">
 				<label>Pregunta</label> 
 				<input class="form-control" type="text" name="pregunta" id="pregunta" placeholder="Ingresa la pregunta">
@@ -42,9 +39,8 @@
 				<input class="form-control" type="text" name="res3" id="res3" placeholder="Ingresa respuesta 3">
 			</div>
 			<div class="form-group">
-				<button class="btn btn-primary" id="agregar">Agregar pregunta</button>
+				<button class="btn btn-primary" id="agregar" onclick="validar()">Agregar pregunta</button>
 			</div>
-		</form>
 	   </div>
 	</div>
 

@@ -40,7 +40,7 @@
         i = i + 1;
 
         if(correcta == 1){
-          $("#mostrar").append("<h4>"+i+".- "+pregunta+"</h4>");
+          $("#mostrar").append("<h3>"+i+".- "+pregunta+"</h3>");
           $("#mostrar").append("<label class='text-primary'> a) "+res1+"</label><br>");
           $("#mostrar").append("<p> b) "+res2+"</p>");
           $("#mostrar").append("<p> c) "+res3+"</p><legend></legend>");
@@ -48,14 +48,14 @@
         if(correcta == 2){
           $("#mostrar").append("<h3>"+i+".- "+pregunta+"</h3>");
           $("#mostrar").append("<p> a) "+res1+"</p>");
-          $("#mostrar").append("<label> b) "+res2+"</label><br>");
+          $("#mostrar").append("<label class='text-primary'> b) "+res2+"</label><br>");
           $("#mostrar").append("<p> c) "+res3+"</p><legend></legend>");
         }
         if(correcta == 3){
           $("#mostrar").append("<h3>"+i+".- "+pregunta+"</h3>");
           $("#mostrar").append("<p> a) "+res1+"</p>");
           $("#mostrar").append("<p> b) "+res2+"</p>");
-          $("#mostrar").append("<label> c) "+res3+"</label><legend></legend>");
+          $("#mostrar").append("<label class='text-primary'> c) "+res3+"</label><legend></legend>");
           }
 
       });
