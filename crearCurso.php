@@ -16,6 +16,7 @@
       $descripcion = $_POST['descripcion'];
       $fecha_inicio = $_POST['fecha_inicio'];
       $costo = $_POST['costo'];
+      $categoria = $_POST['categoria'];
       if (!isset($_FILES["imagen"]) || $_FILES["imagen"]["error"] > 0){
           echo "Ha ocurrido un error.";
       } else {
@@ -55,6 +56,9 @@
       
       $sql = "INSERT INTO Usuario_has_Curso VALUES ('$id_usuario','$id_curso',1)";      
       $resultado = mysqli_query($con, $sql) or die("Hubo un error al insertar".mysqli_error($con));
+
+      $sql = "INSERT INTO Curso_has_Categoria VALUES ('$categoria','$id_curso')";      
+      $resultado = mysqli_query($con, $sql) or die("Hubo un error al insertar en categorias".mysqli_error($con));
       header("Location: home.php#tutorial");
     }
   }

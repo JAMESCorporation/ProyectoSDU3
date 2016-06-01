@@ -13,19 +13,19 @@
 		<div class="row col-lg-offset-2" id="">
 			
 			<div class="col-lg-3 ">
-				<input type="search" name="buscar" placeholder="Buscar curso" class="form-control">
+				<input type="search" name="buscar" placeholder="Buscar curso" class="form-control" id="buscar">
 			</div>
 			<div class="col-lg-3 ">
-				<select name="filtro" class="form-control">
-					<option value="1">Todos</option>
+				<select name="filtro" class="form-control" id="filtro">
+					<option value="1" selected>Todos</option>
 					<option value="2">Mis Cursos</option>
 					<option value="3">Cursando</option>
-					<option value="3">Recientes</option>
 				</select>
 			</div>
 
 			<div class="col-lg-3 ">
-				<select name="categoria" class="form-control">
+				<select name="categoria" class="form-control" id="categoria">
+					<option value="0" selected>Todas</option>
 				<?php
 					$sqlCat = "SELECT * FROM Categoria";
 					$resCat = mysqli_query($con,$sqlCat) or die(mysql_error($con));
@@ -38,7 +38,7 @@
 				</select>
 			</div>
 
-			<button class="btn btn-primary">Filtrar</button>
+			<button class="btn btn-primary" id="filtrar">Filtrar</button>
 			
 		</div>
 				

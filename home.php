@@ -27,15 +27,30 @@ if($valorSesion == 1){
               </div>
 
               <div class="form-group">
-                <label for="nombre">Fecha inicio: </label>
+                <label for="fecha_inicio">Fecha inicio: </label>
                 <input type="text" name="fecha_inicio" class="form-control" placeholder="..." required />
               </div>
 
               <div class="form-group">
-                <label for="nombre">Costo: </label>
+                <label for="costo">Costo: </label>
                 <input type="text" name="costo" class="form-control" placeholder="..." required />
               </div>
 
+              <div class="form-group">
+              <label for="nombre">Categoria: </label>
+                <select name="categoria" class="form-control" id="categoria">
+                  
+                <?php
+                  $sqlCat = "SELECT * FROM Categoria";
+                  $resCat = mysqli_query($con,$sqlCat) or die(mysql_error($con));
+                  while($regCat = mysqli_fetch_array($resCat)){
+                ?>
+                  <option value="<?php echo $regCat['id_categoria']; ?>"><?php echo $regCat['nombre_categoria']; ?></option>
+                <?php
+                  }
+                ?>          
+                </select>
+              </div>
               <div class="form-group">
                 <label for="imagen">Portada: </label>
                 <input name='imagen' type='file'  id='imagen'  multiple required>

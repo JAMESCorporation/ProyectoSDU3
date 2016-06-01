@@ -137,14 +137,14 @@ CREATE TABLE Usuario_has_Curso (
 -- -----------------------------------------------------
 -- Tabla - Categoria_has_Curso
 -- -----------------------------------------------------
-CREATE TABLE Categoria_has_Curso (
+CREATE TABLE Curso_has_Categoria (
   id_categoria INT NOT NULL,
   id_curso INT NOT NULL,
   PRIMARY KEY (id_categoria, id_curso),
   FOREIGN KEY (id_categoria) REFERENCES Categoria (id_categoria),
   FOREIGN KEY (id_curso) REFERENCES Curso (id_curso));
 
-INSERT INTO Categoria_has_Curso VALUES (1,1);
+INSERT INTO Curso_has_Categoria VALUES (1,1);
 
 -- -----------------------------------------------------
 -- Tabla - Usuario_has_Test
