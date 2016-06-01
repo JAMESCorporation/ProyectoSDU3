@@ -81,7 +81,7 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<li><a href="salir.php"><span class="glyphicon glyphicon-user"></span> <?php echo $correo ?> </a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $correo ?> </a></li>
 								<li><a href="salir.php"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesion</a></li>
 							</li>
 						</ul>

@@ -28,6 +28,12 @@
             $tipo = $_FILES['video']['type'];
             $fp = fopen($video_temporal, 'r+b');
             $data = fread($fp, filesize($video_temporal));
+            while (!feof($fp)) {
+                $buffer = fgets($fp, 4096);
+                $croninf .= '<tr><td>' . $buffer . '</td></tr>' . "\n";
+            } ;
+            $size = $stat['size'];
+            echo "$size";
             fclose($fp);
             $data = mysqli_real_escape_string($con,$data);
             $sql = "INSERT INTO Tutorial VALUES (null,'$nombre','$descripcion','$data','$tipo',0,0,0,now(),'$curso')";
