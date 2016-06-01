@@ -5,8 +5,7 @@ $res1 = $_POST['res1'];
 $res2 = $_POST['res2'];
 $res3 = $_POST['res3'];
 $correcta = $_POST['correcta'];
-
-$id_test = 2;
+$id_test = $_POST['id_test'];
 
 $sql = "INSERT INTO Pregunta VALUES (null,'$pregunta',$id_test)";
 $res = mysqli_query($con, $sql) or die (myqli_connect_error());

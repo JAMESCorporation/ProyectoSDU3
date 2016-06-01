@@ -12,19 +12,27 @@
   <script type="text/javascript">
   	
   </script>
+
+  <script>
+    function check(res) {
+      var check = res;
+      document.getElementById("r").value = check;
+    }
+    function funcion(res) {
+      var indice = res;
+      document.getElementById("p").value = indice;
+    }
+     
+  </script>
   
   <script>
-
-     
-
     var i = 0;
-  
-
       $("#agregar").click(function(){
         var pregunta = document.getElementById("pregunta").value;
         var res1 = document.getElementById("res1").value;
         var res2 = document.getElementById("res2").value;
         var res3 = document.getElementById("res3").value;
+     var id_test = document.getElementById("id_test").value;
         var res = document.getElementsByName("res");
         for(var con=0; con<3; con++){
           if(res[con].checked){
@@ -34,7 +42,7 @@
         $.ajax({
         url: 'nueva_pregunta.php',
         type: 'POST',
-        data: {'pregunta':pregunta,'res1':res1,'res2':res2,'res3':res3, 'correcta':correcta},
+        data: {'pregunta':pregunta,'res1':res1,'res2':res2,'res3':res3, 'correcta':correcta, 'id_test':id_test },
         }); 
 
         i = i + 1;

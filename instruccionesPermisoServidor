@@ -1,7 +1,7 @@
 en el php ini se tiene que cambiar el valor de
 post_max_size a 200M
 upload_max_size a 200M
-max_memory_limit a 200M 
+memory_limit a 200M 
 
 o mas lo que quieran
 
