@@ -23,24 +23,21 @@
 				<input class="form-control" type="text" name="pregunta" id="pregunta" placeholder="Ingresa la pregunta">
 			</div>
 			<div class="form-group">
-				<div class="radio">
-				<input type="radio" name="res" value="res1" required="required" id="r1" checked="enable">
-				<label for="r1"> 1a Respuesta </label> 
-				</div>
+				<label for="r1" class="radio radio-primary">
+					<input type="radio" name="res" value="res1" required="required" id="r1" checked="enable"> 1a Respuesta 
+				</label> 
 				<input class="form-control" type="text" name="res1" id="res1" placeholder="Ingresa respuesta 1">
 			</div>
 			<div class="form-group">
-							<div class="radio">
-
-				<input type="radio" name="res" value="res2" required="required" id="r2">
-				<label for="r2"> 2a Respuesta </label></div>
+				<label for="r2" class="radio radio-primary">
+					<input type="radio" name="res" value="res2" required="required" id="r2"> 2a Respuesta
+				</label>
 				<input class="form-control" type="text" name="res2" id="res2" placeholder="Ingresa respuesta 2">
 			</div>
 			<div class="form-group">
-							<div class="radio">
-
-				<input type="radio" name="res" value="res3" required="required" id="r3">
-				<label for="r3"> 3a Respuesta </label></div>
+				<label for="r3" class="radio radio-primary"> 
+					<input type="radio" name="res" value="res3" required="required" id="r3"> 3a Respuesta
+				</label>
 				<input class="form-control" type="text" name="res3" id="res3" placeholder="Ingresa respuesta 3">
 				<input type="hidden" id="id_test" value="<?php echo $id_test; ?>">
 			</div>
