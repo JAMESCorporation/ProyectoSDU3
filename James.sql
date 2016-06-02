@@ -54,7 +54,7 @@ CREATE TABLE Curso (
 CREATE TABLE Tutorial (
   id_tutorial INT NOT NULL AUTO_INCREMENT,
   nombre_tutorial VARCHAR(45) NOT NULL,
-  descripcion_tutorial VARCHAR(45) NULL,
+  descripcion_tutorial TEXT NULL,
   video longblob NOT NULL,
   tipo_video varchar(50),
   visitas INT NULL DEFAULT 0,
