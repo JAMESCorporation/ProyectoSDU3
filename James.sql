@@ -143,7 +143,6 @@ CREATE TABLE Curso_has_Categoria (
   FOREIGN KEY (id_categoria) REFERENCES Categoria (id_categoria),
   FOREIGN KEY (id_curso) REFERENCES Curso (id_curso));
 
-INSERT INTO Curso_has_Categoria VALUES (1,1);
 
 -- -----------------------------------------------------
 -- Tabla - Usuario_has_Test
