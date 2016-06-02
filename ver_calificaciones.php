@@ -4,6 +4,7 @@ require_once('header.php');
 $id_tutorial = $_GET['id_tutorial'];
 $sql = "select tu.id_tutorial, u.nombre, has.calificacion, has.fecha from Tutorial as tu, Usuario as u, Test as te, Usuario_has_Test as has where tu.id_tutorial = te.id_tutorial and te.id_test = has.id_test and u.id_usuario = has.id_usuario and tu.id_tutorial = $id_tutorial and te.id_tutorial = $id_tutorial order by has.fecha desc";
 $res = mysqli_query($con, $sql);
+  if(mysqli_num_rows($res) > 0){
 ?>
 <div class="container">
   <table class="table table-hover">
@@ -18,8 +19,10 @@ $res = mysqli_query($con, $sql);
         Fecha de elaboración
       </th>
     </tr>
-
-    <?php while($reg = mysqli_fetch_array($res)){
+    
+    <?php 
+  
+    while($reg = mysqli_fetch_array($res)){
         ?>
       <tr>
         <td>
@@ -37,7 +40,14 @@ $res = mysqli_query($con, $sql);
           <?php echo $reg['fecha']; ?>
         </td>
       </tr>
-      <?php }
+      <?php 
+      }
+    } else {
+     
+          ?>
+          <h3 class="text-center"> <?php echo "Nadie ha realizado la evaluación aún"; ?> </h3> 
+     <?php
+    }
       ?>
   </table>
 </div>
