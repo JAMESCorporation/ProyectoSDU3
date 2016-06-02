@@ -9,6 +9,12 @@ if(!$_GET){
 	$res = mysqli_query($con, $sql) or die("Error consultando: ".mysqli_connect_error());
 	$reg = mysqli_fetch_array($res) or die("Error al convertir los registros");
 
+  $visitas = $reg['visitas'];
+  $likes = $reg['megusta'];
+
+  $sql_visitas = "update Tutorial set visitas = $visitas+1 where id_tutorial = $tutorial"; 
+  $res_visitas = mysqli_query($con, $sql_visitas);
+
 	$sql2 = "SELECT * FROM Curso WHERE id_curso = '$curso'";
 	$res2 = mysqli_query($con, $sql2) or die("Error consultando: ".mysqli_connect_error());
 	$reg2 = mysqli_fetch_array($res2) or die("Error al convertir los registros");
@@ -42,8 +48,13 @@ if(!$_GET){
            ?>
           <h3 class="text-danger">Descripción</h3>
           <div class="text-left">
+          <?php 
+             if(isset($_SESSION['email'])){
+          ?>
+            <!--<img src="includes/pictures/like.png" width="25" height="25">-->
             <a href='obtenervideo.php?id_tutorial=<?php echo $tutorial; ?>' download='<?php echo $reg['nombre_tutorial']." - Curso ".$reg2['nombre_curso'] ?>' class='btn btn-default btn-download'> Descargar </a>
             <?php 
+       
               if ($estado == 1) {
 
                 if(mysqli_num_rows($res_hayTest) > 0){
@@ -58,9 +69,6 @@ if(!$_GET){
           } else {
               $sql_hayUsuario = "Select * from Usuario_has_Test where id_usuario = $id_usuario";
               $res_hayUsuario = mysqli_query($con, $sql_hayUsuario);
-
-
-              
               if(mysqli_num_rows($res_hayUsuario) > 0){
                 $reg_hayTest = mysqli_fetch_array($res_hayTest);
                 $id_test = $reg_hayTest['id_test'];
@@ -78,10 +86,11 @@ if(!$_GET){
             <?php 
                 }
              }
+           }
             ?>
           </div>
           <div class="text-right">
-            Visitas
+            <?php echo $visitas." visitas";?>
           </div>
           <?php echo $reg['descripcion_tutorial']; ?>
         </div>

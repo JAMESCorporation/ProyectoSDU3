@@ -55,10 +55,11 @@ $cal = $reg_cal['calificacion'];
 				$sql_pregunta = "select * from Pregunta where id_test = $id_test";
 				$res_pregunta = mysqli_query($con, $sql_pregunta);
 				$value = 0;
+				$conta = 1;
 				while($reg_pregunta = mysqli_fetch_array($res_pregunta)){
 			?>
 	           		<div class="form-group">
-						<h4><?php echo $reg_pregunta['pregunta']; ?></h4> 
+						<h4><?php echo $conta." .- ".$reg_pregunta['pregunta']; ?></h4> 
 					</div>
 					<?php
 		           		$id_pregunta =  $reg_pregunta['id_pregunta'];
@@ -67,8 +68,11 @@ $cal = $reg_cal['calificacion'];
 							while($reg_respuesta = mysqli_fetch_array($res_respuesta)){
 					?>
 							<div class="form-group">
+							<label>
 								<input type="radio" id="res" value="<?php echo $reg_respuesta['correcta']; ?>" name="<?php echo $value; ?>" > 
+								
 								<?php echo $reg_respuesta['respuesta']; ?>
+								</label>
 								
 							</div>
 						<?php
@@ -77,6 +81,7 @@ $cal = $reg_cal['calificacion'];
 						
 						<?php
 							$value++;
+							$conta++;
 
 						}
 						?>
