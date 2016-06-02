@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="includes/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="includes/jquery-ui/jquery-ui.js"></script>
   <script type="text/javascript" src="includes/script.js"></script>
+  <script type="text/javascript" src="includes/slider.js"></script>
   <script type="text/javascript" src="includes/effects.js"></script>
   <script type="text/javascript">
   	

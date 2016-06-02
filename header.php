@@ -21,6 +21,7 @@
       <link rel="stylesheet" href="includes/bootstrap/dist/css/bootstrap.css">
       <link rel="stylesheet" href="includes/bootstrap/dist/css/style.css">
       <link rel="stylesheet" href="includes/animations.css">
+      <link rel="stylesheet" href="includes/slider.css">
 </head>
 
 <body>
