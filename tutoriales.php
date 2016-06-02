@@ -12,6 +12,8 @@ if(!$_GET){
 	$sql2 = "SELECT * FROM Curso WHERE id_curso = '$curso'";
 	$res2 = mysqli_query($con, $sql2) or die("Error consultando: ".mysqli_connect_error());
 	$reg2 = mysqli_fetch_array($res2) or die("Error al convertir los registros");
+  $sql_hayTest = "Select * from Test where id_tutorial = $tutorial";
+  $res_hayTest = mysqli_query($con, $sql_hayTest);
 ?>
 
     <div class="row">
@@ -40,17 +42,26 @@ if(!$_GET){
            ?>
           <h3 class="text-danger">Descripción</h3>
           <div class="text-left">
-            <a href='obtenervideo.php?id=<?php echo $reg['id_tutorial']; ?>' download='<?php echo $reg['nombre_tutorial']." - Curso ".$reg2['nombre_curso'] ?>' class='btn btn-default btn-download'> Descargar </a>
+            <a href='obtenervideo.php?id_tutorial=<?php echo $tutorial; ?>' download='<?php echo $reg['nombre_tutorial']." - Curso ".$reg2['nombre_curso'] ?>' class='btn btn-default btn-download'> Descargar </a>
             <?php 
               if ($estado == 1) {
-            ?>
+
+                if(mysqli_num_rows($res_hayTest) > 0){
+                  ?>
+            <a href='ver_calificaciones.php?id_tutorial=<?php echo $tutorial; ?>' class='btn btn-default btn-download'> Ver calificaciones </a>
+              <?php
+                } else {
+              ?>
             <a href='test.php?id_tutorial=<?php echo $reg['id_tutorial']; ?>&id_curso=<?php echo $curso; ?>' class='btn btn-default btn-download'> Crear cuestionario </a>
             <?php 
-            } else {
+                 }
+          } else {
+              $sql_hayUsuario = "Select * from Usuario_has_Test where id_usuario = $id_usuario";
+              $res_hayUsuario = mysqli_query($con, $sql_hayUsuario);
 
-              $sql_hayTest = "Select * from Test where id_tutorial = $tutorial";
-              $res_hayTest = mysqli_query($con, $sql_hayTest);
-              if(mysqli_num_rows($res_hayTest) > 0){
+
+              
+              if(mysqli_num_rows($res_hayUsuario) > 0){
                 $reg_hayTest = mysqli_fetch_array($res_hayTest);
                 $id_test = $reg_hayTest['id_test'];
 

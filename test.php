@@ -10,6 +10,7 @@
 	$reg_id_test = mysqli_fetch_array($res_id_test);
 	$id_test = $reg_id_test['0'];
 ?>
+ 	
 
 	<div class="container">
 	   <div class="col-md-8 col-md-offset-2">
@@ -22,20 +23,26 @@
 				<input class="form-control" type="text" name="pregunta" id="pregunta" placeholder="Ingresa la pregunta">
 			</div>
 			<div class="form-group">
-				<input type="radio" name="res" value="res1" required="required">
-				<label> 1a Respuesta </label> 
+				<div class="radio">
+				<input type="radio" name="res" value="res1" required="required" id="r1" checked="enable">
+				<label for="r1"> 1a Respuesta </label> 
+				</div>
 				<input class="form-control" type="text" name="res1" id="res1" placeholder="Ingresa respuesta 1">
 			</div>
 			<div class="form-group">
-				<input type="radio" name="res" value="res2" required="required">
-				<label> 2a Respuesta </label>
+							<div class="radio">
+
+				<input type="radio" name="res" value="res2" required="required" id="r2">
+				<label for="r2"> 2a Respuesta </label></div>
 				<input class="form-control" type="text" name="res2" id="res2" placeholder="Ingresa respuesta 2">
 			</div>
 			<div class="form-group">
-				<input type="radio" name="res" value="res3" required="required">
-				<label> 3a Respuesta </label>
+							<div class="radio">
+
+				<input type="radio" name="res" value="res3" required="required" id="r3">
+				<label for="r3"> 3a Respuesta </label></div>
 				<input class="form-control" type="text" name="res3" id="res3" placeholder="Ingresa respuesta 3">
-				<input type="text" id="id_test" value="<?php echo $id_test; ?>">
+				<input type="hidden" id="id_test" value="<?php echo $id_test; ?>">
 			</div>
 			<div class="form-group">
 				<button class="btn btn-primary" id="agregar">Agregar pregunta</button>
