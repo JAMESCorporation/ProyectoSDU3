@@ -47,10 +47,26 @@ if(!$_GET){
             <a href='test.php?id_tutorial=<?php echo $reg['id_tutorial']; ?>&id_curso=<?php echo $curso; ?>' class='btn btn-default btn-download'> Crear cuestionario </a>
             <?php 
             } else {
+
+              $sql_hayTest = "Select * from Test where id_tutorial = $tutorial";
+              $res_hayTest = mysqli_query($con, $sql_hayTest);
+              if(mysqli_num_rows($res_hayTest) > 0){
+                $reg_hayTest = mysqli_fetch_array($res_hayTest);
+                $id_test = $reg_hayTest['id_test'];
+
+                $sql_cal = "Select * from Usuario_has_Test where id_test = $id_test and id_usuario = $id_usuario";
+                $res_cal = mysqli_query($con, $sql_cal);
+                $reg_cal = mysqli_fetch_array($res_cal);
+                ?>
+                <label class="text-primary">Ya has realizado la evaluación. Calificación: <?php echo $reg_cal['calificacion'];?></label>
+              <?php
+              } else {
+
             ?>
-            <a href='cuestionario.php?id_tutorial=<?php echo $reg['id_tutorial']; ?>&id_curso=<?php echo $curso; ?>' class='btn btn-default btn-download'> Realizar cuestionario </a>
+              <a href='cuestionario.php?id_tutorial=<?php echo $reg['id_tutorial']; ?>&id_curso=<?php echo $curso; ?>' class='btn btn-default btn-download'> Realizar cuestionario </a>
             <?php 
-            }
+                }
+             }
             ?>
           </div>
           <div class="text-right">

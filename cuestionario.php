@@ -29,6 +29,11 @@ $res_test = mysqli_query($con, $sql_test);
 $reg_test = mysqli_fetch_array($res_test);
 $id_test = $reg_test['id_test'];
 
+$sql_cal = "select * from Usuario_has_Test where id_test = $id_test and id_curso = $id_curso";
+$res_cal = mysqli_query($con, $sql_cal);
+$reg_cal = mysqli_fetch_array($res_cal);
+$cal = $reg_cal['calificacion'];
+
 ?>
 
 <div class="container">
@@ -42,6 +47,10 @@ $id_test = $reg_test['id_test'];
 				$tam = $reg_con['0'];
 				?>
 				<input type="hidden" name="tam" value="<?php echo $tam; ?>"> 
+				<input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>"> 
+				<input type="hidden" name="id_test" value="<?php echo $id_test; ?>"> 
+				<input type="hidden" name="id_curso" value="<?php echo $id_curso; ?>"> 
+				<input type="hidden" name="id_tutorial" value="<?php echo $id_tutorial; ?>"> 
 				<?php
 				$sql_pregunta = "select * from Pregunta where id_test = $id_test";
 				$res_pregunta = mysqli_query($con, $sql_pregunta);
