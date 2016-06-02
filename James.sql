@@ -47,7 +47,6 @@ CREATE TABLE Curso (
   tipo_imagen varchar(50),
   PRIMARY KEY (id_curso));
 
-INSERT INTO Curso VALUES (null,'Android','Aquí veremos Android',100.0,'2016-05-21',null,null);
 
 -- -----------------------------------------------------
 -- Tabla - Tutorial
@@ -59,7 +58,7 @@ CREATE TABLE Tutorial (
   video longblob NOT NULL,
   tipo_video varchar(50),
   visitas INT NULL DEFAULT 0,
-  `like` INT NULL DEFAULT 0,
+  megusta INT NULL DEFAULT 0,
   tipo INT NULL,
   fecha_creacion TIMESTAMP NULL,
   id_curso INT NOT NULL,
