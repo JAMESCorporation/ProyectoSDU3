@@ -67,7 +67,7 @@ if($valorSesion == 1){
       </div>
 
       <?php
-        $sqlCursos = "SELECT * FROM Curso as a, Usuario as b, Usuario_has_Curso as c WHERE b.id_usuario = '".$reg['id_usuario']."' and a.id_curso = c.id_curso and b.id_usuario = c.id_usuario";
+        $sqlCursos = "SELECT * FROM Curso as a, Usuario as b, Usuario_has_Curso as c WHERE b.id_usuario = '".$reg['id_usuario']."' and a.id_curso = c.id_curso and b.id_usuario = c.id_usuario and c.estado = 1";
         $resCursos = mysqli_query($con, $sqlCursos);
 
         if(mysqli_num_rows($resCursos) > 0){
@@ -80,20 +80,20 @@ if($valorSesion == 1){
             <!--<form action="crearTutorial.php" method="post">-->
               <div class="form-group">
                 <label for="nombre">Nombre del tutorial: </label>
-                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre del tutorial">
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre del tutorial" required>
               </div>
               <div class="form-group">
                 <label for="descripcion">Descripción: </label>
-                <input type="text" name="descripcion" class="form-control" id="descripcion"placeholder="Descripcion">
+                <input type="text" name="descripcion" class="form-control" id="descripcion"placeholder="Descripcion" required>
               </div>
 
               <div class="form-group">
                 <label for="video">Video:</label>
-                <input name='video' type='file'  id='video' accept="video/mp4" multiple>
+                <input name='video' type='file'  id='video' accept="video/mp4" multiple required>
               </div>
               <div class="form-group">
                 <label for="cursos">Curso al que pertenece</label>
-                <select name="cursos" class="form-control">
+                <select name="cursos" class="form-control" required>
                   <?php while($reg_curso = mysqli_fetch_array($resCursos)) { ?>
                     <option value="<?php echo $reg_curso['id_curso']; ?>"><?php echo $reg_curso['nombre_curso']; ?></option>
                   <?php	 } ?>

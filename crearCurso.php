@@ -8,7 +8,7 @@
     }else{
       require_once("includes/conexion.php");
       $sqlUser = "SELECT id_usuario FROM Usuario WHERE correo = '".$_SESSION['email']."'";
-      $resUser = mysqli_query($con, $sqlUser);
+      $resUser = mysqli_query($con, $sqlUser) or die(mysqli_error($con));
       $regUser = mysqli_fetch_array($resUser);
       $id_usuario = $regUser['id_usuario'];
 
@@ -17,6 +17,7 @@
       $fecha_inicio = $_POST['fecha_inicio'];
       $costo = $_POST['costo'];
       $categoria = $_POST['categoria'];
+      $puntos = ($costo * 7);
       if (!isset($_FILES["imagen"]) || $_FILES["imagen"]["error"] > 0){
           echo "Ha ocurrido un error.";
       } else {
@@ -30,8 +31,8 @@
             $data = fread($fp, filesize($imagen_temporal));
             fclose($fp);
             $data = mysqli_real_escape_string($con,$data);
-            $sql = "INSERT INTO Curso VALUES (null,'$nombre','$descripcion','$costo','$fecha_inicio','$data','$tipo')";
-            $resultado = mysqli_query($con, $sql) or die(mysqli_connect_error());
+            $sql = "INSERT INTO Curso VALUES (null,'$nombre','$descripcion','$costo','$fecha_inicio','$data','$tipo','$puntos')";
+            $resultado = mysqli_query($con, $sql) or die(mysqli_error($con));
             if ($resultado)
             {
                 echo "El archivo ha sido copiado exitosamente.";
@@ -59,6 +60,9 @@
 
       $sql = "INSERT INTO Curso_has_Categoria VALUES ('$categoria','$id_curso')";      
       $resultado = mysqli_query($con, $sql) or die("Hubo un error al insertar en categorias".mysqli_error($con));
+      $sqlPuntos = "UPDATE Usuario SET puntos = (puntos + 500 ) WHERE id_usuario = '$id_usuario'";
+      $resPuntos = mysqli_query($con, $sqlPuntos) or die("Hubo un error al insertar en Usuario.puntos".mysqli_error($con)); 
+
       header("Location: home.php#tutorial");
     }
   }

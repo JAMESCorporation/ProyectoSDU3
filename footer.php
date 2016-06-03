@@ -1,9 +1,9 @@
 
 
-  
-  <!--<footer class="navbar navbar-fixed-bottom" id="footer">
+  <hr>
+  <footer class="" id="footer">
     <p>Copyright © 2016 JAMES todos los derechos reservados | Ingenieria en Sistemas Computacionales | IS-801</p>
-  </footer>-->
+  </footer>
 	<script type="text/javascript" src="includes/bootstrap/dist/js/jquery.js"></script>
 	<script type="text/javascript" src="includes/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="includes/jquery-ui/jquery-ui.js"></script>

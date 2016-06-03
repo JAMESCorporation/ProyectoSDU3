@@ -76,13 +76,24 @@
 	            <li><a href="curso.php">Cursos</a></li>
 	            <li><a href="home.php#curso">Crear Curso</a></li>
 							<li><a href="home.php#tutorial">Agregar tutorial</a></li>
-              <li><a href="enviarCorreo.php">Enviar correo</a></li>
+              <!--<li><a href="enviarCorreo.php">Enviar correo</a></li>-->
 
 	            <li><a href="contacto.php">Contacto</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<li><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $correo ?> </a></li>
+								<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo $correo ?> </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">
+                      <?php 
+                        $sqlP = "SELECT puntos FROM Usuario WHERE correo = '$correo'";
+                        $resP = mysqli_query($con, $sqlP) or die(mysqli_error($con));
+                        $regP = mysqli_fetch_array($resP);
+                        echo $regP['puntos']."<span class='glyphicon glyphicon-heart' style='color:red;'></span></a>";
+                       ?>
+                    </li>
+                  </ul>
+                </li>
 								<li><a href="salir.php"><span class="glyphicon glyphicon-log-in"></span> Cerrar Sesion</a></li>
 							</li>
 						</ul>

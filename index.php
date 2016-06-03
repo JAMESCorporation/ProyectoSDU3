@@ -1,39 +1,44 @@
 <?php
 require_once('header.php');
  ?>
-   <div class="jumbotron" id="jumboHead">
+   <div class="jumbotron" >
       <div class="container" >
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <h1 class="text-primary">Bienvenido al portal de James Courses!</h1>
+        <p>Podrás encontrar cursos de tu preferencia, temas que en algun momento podrán despertar el interes en ti, cada uno de los cursos esta diseñado y implementado para poder analizar y entenderlo de manera correcta. Visitala y no olvides dejarnos un comentario.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Ver cursos &raquo;</a></p>
       </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      <?php 
+      	$sqlVisitados = "SELECT id_curso,id_tutorial,nombre_tutorial,descripcion_tutorial FROM Tutorial order by visitas desc limit 0,2";
+      	$resVisitados = mysqli_query($con, $sqlVisitados) or die(mysqli_error($con));
+      	while($regVisitados = mysqli_fetch_array($resVisitados)){
+       ?>
+        <div class="col-lg-4">
+          <h2><?php echo $regVisitados['nombre_tutorial']; ?></h2>
+          
+          <div class="thumbnail">
+          	<img src="obtenerimagen.php?id=<?php echo $regVisitados['id_curso']; ?>"/>
+          </div>
+          <p><?php echo $regVisitados['descripcion_tutorial']; ?></p>
+			<?php
+				if($valorSesion == -1){
+			?>
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" > Inicia Sesión </button></div>
+			<?php
+				} else {
+          	?>
+          <p><a class="btn btn-success" href="tutoriales.php?<?php echo 'id_tutorial='.$regVisitados['id_tutorial']."&&id_curso=".$regVisitados['id_curso']; ?>" role="button">Ver video &raquo;</a></p>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
+
+        <?php
+        	}
+        }
+        ?>
       </div>
-
-      <hr>
-
-      <footer>
-        <p>&copy; 2015 Company, Inc.</p>
-      </footer>
     </div>
 
 <?php

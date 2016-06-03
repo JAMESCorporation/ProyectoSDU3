@@ -16,10 +16,11 @@ CREATE TABLE Usuario (
   password CHAR(64) NOT NULL,
   fecha_nacimiento DATE NULL,
   tipo INT NULL,
+  puntos INT,
   PRIMARY KEY (id_usuario));
 
-INSERT INTO Usuario VALUES (null,'Efren','Cruz','San Felipe','7121015229','efren@gmail.com',md5('efren'),'1994-10-24',1);
-INSERT INTO Usuario VALUES (null,'Saúl','Gómez Navarrete','Jocotitlán','7121675322','minsau2@gmail.com',md5('saul'),'1994-03-11',1);
+INSERT INTO Usuario VALUES (null,'Efren','Cruz','San Felipe','7121015229','efren@gmail.com',md5('efren'),'1994-10-24',1,2000);
+INSERT INTO Usuario VALUES (null,'Saúl','Gómez Navarrete','Jocotitlán','7121675322','minsau2@gmail.com',md5('saul'),'1994-03-11',1,2000);
 
 -- -----------------------------------------------------
 -- Tabla - Categoria
@@ -45,6 +46,7 @@ CREATE TABLE Curso (
   fecha_inicio DATE NOT NULL,
   imagen longblob,
   tipo_imagen varchar(50),
+  costoPuntos int,
   PRIMARY KEY (id_curso));
 
 

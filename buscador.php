@@ -1,6 +1,12 @@
 <?php
 session_start();
 	require_once('includes/conexion.php');
+	  if(!isset($_SESSION['email'])){
+    $valorSesion = -1;
+  } else {
+    $valorSesion = 1;
+    $correo = $_SESSION['email'];
+  }
 	$busqueda = $_POST['buscar'];
 	$filtro = $_POST['filtro'];
 	$categoria = $_POST['categoria'];
@@ -54,19 +60,26 @@ session_start();
 
 		  	while($regCursos = mysqli_fetch_array($resCursos)){
 		  ?>
- 			 <div class="col-md-3 col-lg-3">
+			 <div class="col-md-3 col-lg-3">
  				<div class="thumbnail curso">
 		      	  <img src="obtenerimagen.php?id=<?php echo $regCursos['id_curso']; ?>"/>
 			      <div class="caption">
 		        	<h3><?php echo $regCursos['nombre_curso']; ?></h3>
 		        	<p><?php echo $regCursos['descripcion_curso']; ?></p>
 		        	<p class="text-right"><a href="listaTutoriales.php?id_curso=<?php echo $regCursos['id_curso']; ?>" class="btn btn-primary" role="button">Ver</a>
-		        	<?php
+					<?php
 						if($valorSesion == -1){
 					?>
 							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal" > Inicia Sesión </button>
 					<?php
 						} else {
+							$sql = "SELECT * FROM Usuario WHERE correo = '$correo'";
+    						$res = mysqli_query($con,$sql) or die(mysqli_error($con));
+    						$reg = mysqli_fetch_array($res);
+							$sqlEstado = "SELECT estado FROM Usuario_has_Curso WHERE id_usuario = '".$reg['id_usuario']."' and id_curso = '".$regCursos['id_curso']."'";
+							$resEstado = mysqli_query($con,$sqlEstado) or die(mysql_error($con));
+							$regEstado = mysqli_fetch_array($resEstado);
+							if(mysqli_num_rows($resEstado) == 0) {
 					?>
 
 			        	<a href="comprar.php?id_curso=<?php echo $regCursos['id_curso']; ?>" class="btn btn-success" role="button"><?php
@@ -77,8 +90,11 @@ session_start();
 			        	}?>
 			        	</a>
 			        <?php
+			        		}
 			        	}
-					?></p>
+					?>
+		        	</p>
+		      	  
 		      	  </div>
 		    	</div>
 		 	 </div>

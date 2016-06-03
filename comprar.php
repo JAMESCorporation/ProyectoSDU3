@@ -21,20 +21,52 @@
       			<div class="caption">
     			<h3>Confirmar compra del curso: <?php echo $regCursos['nombre_curso']; ?></h3>
     			<h4 class="text-primary">Costo: <?php echo "$".$regCursos['costo']." MX"; ?></h4>
+    			<h4 class="text-primary">Tambien: <?php echo $regCursos['costoPuntos']; ?> <span class='glyphicon glyphicon-heart' style='color:red;'></span></h4>
     			<?php 
     				if(!$_POST){
     			?>
-		    			<form action="comprar.php?id_curso=<?php echo $id_curso;?>" method="post">
+    			<div class="row">
+    				<div class="col-lg-2">
+    					<form action="comprar.php?id_curso=<?php echo $id_curso;?>" method="post">
 		    				<input type="hidden" name="id_curso" value="<?php echo $regCursos['id_curso']; ?>">
-		    				<input type="submit" class="btn btn-warning btn-large outline" value="Comprar">
-		    			</form>	
+		    				<input type="hidden" name="puntos" value="0">
+		    				<button class="btn btn-success btn-large outline"><span class='glyphicon glyphicon-usd' style='color:green;'></span></button>
+		    			</form>
+    				</div>
 
+    				<div class="col-lg-2">
+    					<form action="comprar.php?id_curso=<?php echo $id_curso;?>" method="post">
+		    				<input type="hidden" name="id_curso" value="<?php echo $regCursos['id_curso']; ?>">
+		    				<input type="hidden" name="puntos" value="1">
+		    				<?php
+		    					$sql = "SELECT * FROM Usuario WHERE correo = '$correo'";
+    							$res = mysqli_query($con,$sql) or die(mysqli_error($con));
+    							$reg = mysqli_fetch_array($res);
+		    					if($reg['puntos'] >= $regCursos['costoPuntos']){
+		    				?>
+		    				<button class="btn btn-danger btn-large outline"><span class='glyphicon glyphicon-heart' style='color:red;'></span></button>
+
+		    				<?php 
+		    					}
+		    				 ?>
+		    			</form>
+    				</div>
+    			</div>
 				<?php
     				} else {
     					$id_curso = $_POST['id_curso'];
+    					$puntos = $_POST['puntos'];
+
     					$sql = "SELECT * FROM Usuario WHERE correo = '$correo'";
     					$res = mysqli_query($con,$sql) or die(mysqli_error($con));
     					$reg = mysqli_fetch_array($res);
+    					$sqlCursos = "SELECT * FROM Curso WHERE id_curso = '$id_curso'";
+			$resCursos = mysqli_query($con, $sqlCursos) or die(mysqli_error($con));
+			$regCursos = mysqli_fetch_array($resCursos);
+    					if($puntos == 1){
+    						$sqlPuntos = "UPDATE Usuario SET puntos = (puntos - ".$regCursos['costoPuntos']." ) WHERE id_usuario = '".$reg['id_usuario']."'";
+      $resPuntos = mysqli_query($con, $sqlPuntos) or die("Hubo un error al insertar en Usuario.puntos".mysqli_error($con)); 
+    					}			
 
     					$sql = "INSERT INTO Usuario_has_Curso VALUES ('".$reg['id_usuario']."', '$id_curso',0)";
     					$res = mysqli_query($con,$sql) or die(mysqli_error($con));

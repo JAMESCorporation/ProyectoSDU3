@@ -14,6 +14,7 @@
       $sqlUser = "SELECT id_usuario FROM Usuario WHERE correo = '".$_SESSION['email']."'";
       $resUser = mysqli_query($con, $sqlUser);
       $regUser = mysqli_fetch_array($resUser);
+      $id_usuario = $regUser['id_usuario'];
       //$sql = "INSERT INTO Tutorial VALUES (null,'$nombre','$descripcion',".($regCurso['noTutorial']+1).",'$curso')";
       //$res = mysqli_query($con, $sql) or die("Hubo un error al guardar el tutorial: ".mysqli_connect_error());
 
@@ -49,7 +50,8 @@
         } else {
             echo "Formato de archivo no permitido o excede el tamaño límite de $limite_kb Kbytes.";
         }
-
+        $sqlPuntos = "UPDATE Usuario SET puntos = (puntos + 150 ) WHERE id_usuario = '$id_usuario'";
+        $resPuntos = mysqli_query($con, $sqlPuntos) or die("Hubo un error al insertar en Usuario.puntos".mysqli_error($con)); 
         header("Location: home.php#tutorial");
       }
 

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Nunito:300);
+
 
 #carouselimagenes{
 max-width: 100%;
@@ -15,9 +15,10 @@ height: 0%;
 }
 
 #jumboHead{
-  background-image: url("../../../../includes/pictures/fondonegro.jpg");
-}
-/*footer {
+  background-image: url("../../../../includes/pictures/banner.jpg");
+ }
+/*
+footer {
       background-color: #555;
       color: white;
       padding: 15px;

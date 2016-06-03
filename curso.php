@@ -3,10 +3,16 @@
 	$sqlCursos = "SELECT * FROM Curso";
 	$resCursos = mysqli_query($con, $sqlCursos) or die(mysqli_error($con));
 ?>
+
+	<div class="jumbotron" >
+      <div class="container" >
+        <h1 class="text-primary">Tenemos estos cursos para ti!</h1>
+        <!--<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+      </div>
+    </div>
 	<div class="container" id="cursosC">
-		<div class="jumbotron">
-			Bienvenido! Tenemos estos cursos para ti
-		</div>
+		
 		<?php
 			if($valorSesion == 1){
 		?>
