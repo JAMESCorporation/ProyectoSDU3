@@ -10,12 +10,12 @@ require_once('header.php');
 
           <div class="input-group margin-bottom-sm">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input class="form-control" name="nombre" type="text" placeholder="¿Cual es tu nombre?">
+            <input class="form-control" name="nombre" type="text" placeholder="¿Cuál es tu nombre?">
           </div>
           <br>
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-            <input class="form-control" name="correo" type="email" placeholder="¿Cual es tu correo?">
+            <input class="form-control" name="correo" type="email" placeholder="¿Cuál es tu correo?">
           </div>
           <br>
 
@@ -24,7 +24,7 @@ require_once('header.php');
 
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-            <textarea class="form-control" name="cuerpo" rows="7" id="cuerpo" placeholder="¿Que nos quieres compartir?"></textarea>
+            <textarea class="form-control" name="cuerpo" rows="7" id="cuerpo" placeholder="¿Qué nos quieres compartir?"></textarea>
           </div>
           <br>
 

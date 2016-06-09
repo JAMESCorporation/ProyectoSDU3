@@ -4,7 +4,7 @@ require_once('header.php');
    <div class="jumbotron" >
       <div class="container" >
         <h1 class="text-primary">Bienvenido al portal de James Courses!</h1>
-        <p>Podrás encontrar cursos de tu preferencia, temas que en algún momento podrán despertar el interes en ti, cada uno de los cursos esta diseñado y implementado para poder analizar y entenderlo de manera correcta. Visitala y no olvides dejarnos un comentario.</p>
+        <p>Podrás encontrar cursos de tu preferencia, temas que en algún momento podrán despertar el interes en ti, cada uno de los cursos esta diseñado e implementado para poder analizar y entenderlo de manera correcta. Visitala y no olvides dejarnos un comentario.</p>
  	      </div>
     </div>
 
