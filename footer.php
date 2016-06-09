@@ -1,7 +1,12 @@
   <hr>
-  <footer class="" id="footer">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+      <footer class="" id="footer">
     <p>Copyright © 2016 JAMES todos los derechos reservados | Ingenieria en Sistemas Computacionales | IS-801</p>
   </footer>
+    </div>
+  </div>
+  
 	<script type="text/javascript" src="includes/bootstrap/dist/js/jquery.js"></script>
 	<script type="text/javascript" src="includes/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="includes/jquery-ui/jquery-ui.js"></script>
