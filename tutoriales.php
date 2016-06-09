@@ -157,8 +157,7 @@ if(!$_GET){
               <h4><?php echo $nombre_usuario." - (".$reg_comentario['fecha'].")"; ?> </h4>
             </div>
 
-            <input type="button" id="mostrar" name="boton1" value="Ver respuestas">
-            <input type="button" id="ocultar" name="boton2" value="Click pora ocultar elementos">
+            
             <!-- Aqui van las respuestas -->
             <div class="row" id="respuestas">
               <div class="col-md-11 col-md-offset-1">
