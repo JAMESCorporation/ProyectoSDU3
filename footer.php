@@ -1,5 +1,3 @@
-
-
   <hr>
   <footer class="" id="footer">
     <p>Copyright © 2016 JAMES todos los derechos reservados | Ingenieria en Sistemas Computacionales | IS-801</p>

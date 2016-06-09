@@ -45,8 +45,7 @@
           <ul class="nav navbar-nav">
             <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
             <li><a href="curso.php">Cursos</a></li>
-            <li><a href="quiensomos.php">Enseñar</a></li>
-            <li><a href="contacto.php">Contacto</a></li>
+            <li><a href="quiensomos.php">Quienes somos</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right ">
@@ -76,9 +75,9 @@
 	            <li><a href="curso.php">Cursos</a></li>
 	            <li><a href="home.php#curso">Crear Curso</a></li>
 							<li><a href="home.php#tutorial">Agregar tutorial</a></li>
+              <li><a href="quiensomos.php">Quienes somos</a></li>
+              <li><a href="contacto.php">Contacto</a></li>
               <!--<li><a href="enviarCorreo.php">Enviar correo</a></li>-->
-
-	            <li><a href="contacto.php">Contacto</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li>

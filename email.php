@@ -32,6 +32,6 @@ $headers .= "Reply-To: ".$correo."\r\n";
 
 mail($destinatario,$asunto,$cuerpo,$headers) or die("Error enviando el mensaje al Administrador");
 //echo $destinatario." ".$asunto." ".$cuerpo." ".$headers;;
-echo "Correo enviado";
+header("Location: index.php");
 }
  ?>

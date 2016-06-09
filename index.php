@@ -4,16 +4,15 @@ require_once('header.php');
    <div class="jumbotron" >
       <div class="container" >
         <h1 class="text-primary">Bienvenido al portal de James Courses!</h1>
-        <p>Podrás encontrar cursos de tu preferencia, temas que en algun momento podrán despertar el interes en ti, cada uno de los cursos esta diseñado y implementado para poder analizar y entenderlo de manera correcta. Visitala y no olvides dejarnos un comentario.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Ver cursos &raquo;</a></p>
-      </div>
+        <p>Podrás encontrar cursos de tu preferencia, temas que en algún momento podrán despertar el interes en ti, cada uno de los cursos esta diseñado y implementado para poder analizar y entenderlo de manera correcta. Visitala y no olvides dejarnos un comentario.</p>
+ 	      </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
       <?php 
-      	$sqlVisitados = "SELECT id_curso,id_tutorial,nombre_tutorial,descripcion_tutorial FROM Tutorial order by visitas desc limit 0,2";
+      	$sqlVisitados = "SELECT id_curso,id_tutorial,nombre_tutorial,descripcion_tutorial FROM Tutorial order by visitas desc limit 6";
       	$resVisitados = mysqli_query($con, $sqlVisitados) or die(mysqli_error($con));
       	while($regVisitados = mysqli_fetch_array($resVisitados)){
        ?>

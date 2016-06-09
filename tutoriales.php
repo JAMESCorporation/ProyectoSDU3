@@ -153,8 +153,56 @@ if(!$_GET){
           ?>
           <legend>
           <?php echo $reg_comentario['comentario']; ?>
-            <div class="text-right"> <h5><?php echo $nombre_usuario." - (".$reg_comentario['fecha'].")"; ?> </h5></div>
+            <div class="text-right"> 
+              <h4><?php echo $nombre_usuario." - (".$reg_comentario['fecha'].")"; ?> </h4>
+            </div>
+
+            <!-- Aqui van las respuestas -->
+            <div class="row">
+              <div class="col-md-11 col-md-offset-1">
+                <form action="respuesta_comentario.php" method="post" class="form-horizontal" role="form">
+                <?php 
+                $sql_respuesta = "SELECT * from Respuesta_comentario where id_comentario = $id_c";
+                $res_respuesta = mysqli_query($con, $sql_respuesta);
+                if(mysqli_num_rows($res_respuesta) > 0){
+                  while ($reg_respuesta = mysqli_fetch_array($res_respuesta)){
+                ?>
+                <legend>
+                  <h5>
+                  <?php
+                    echo $reg_respuesta['respuesta_comentario'];
+                    $id_r = $reg_respuesta['id_respuesta_comentario'];
+                    $sql_user = "select u.nombre, r.fecha from Usuario as u, Respuesta_comentario as r where r.id_respuesta_comentario = $id_r and r.id_usuario = u.id_usuario";
+                    $res_user = mysqli_query($con, $sql_user);
+                    $reg_user = mysqli_fetch_array($res_user);
+                    ?>
+                    <div align="right">
+                    <?php echo $reg_user['nombre']." - (".$reg_user['fecha'].")"; ?>
+                    </div>
+                  </h5>
+                </legend>
+                <?php
+                  }
+                } else {
+                  echo "Aún no hay respuestas";
+                }
+                ?>
+                  <div align="right">
+                    <textarea class="form-control" name="respuesta" rows="1" id="respuesta" placeholder="Escribe aquí tu respuesta"></textarea>
+                    <input type="hidden" value="<?php echo $id_usuario; ?>" name="id_usuario"></input>
+                    <input type="hidden" value="<?php echo $id_c; ?>" name="id_comentario"></input>
+                    <input type="hidden" value="<?php echo $tutorial; ?>" name="id_tutorial"></input>
+                    <input type="hidden" value="<?php echo $curso; ?>" name="id_curso"></input>
+                    <button type="submit" class="btn btn-default">Responder</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- Aqui termina -->
           </legend>
+
+          
+
           <?php
 				}
 			} else { ?>

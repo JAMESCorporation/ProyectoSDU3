@@ -40,7 +40,7 @@ INSERT INTO Categoria VALUES (null,'Base de Datos');
 -- -----------------------------------------------------
 CREATE TABLE Curso (
   id_curso INT NOT NULL AUTO_INCREMENT,
-  nombre_curso VARCHAR(45) NOT NULL,
+  nombre_curso VARCHAR(150) NOT NULL,
   descripcion_curso TEXT NULL,
   costo FLOAT NOT NULL DEFAULT 0.0,
   fecha_inicio DATE NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE Curso (
 -- -----------------------------------------------------
 CREATE TABLE Tutorial (
   id_tutorial INT NOT NULL AUTO_INCREMENT,
-  nombre_tutorial VARCHAR(45) NOT NULL,
+  nombre_tutorial VARCHAR(150) NOT NULL,
   descripcion_tutorial TEXT NULL,
   video longblob NOT NULL,
   tipo_video varchar(50),
@@ -67,13 +67,12 @@ CREATE TABLE Tutorial (
   PRIMARY KEY (id_tutorial, id_curso),
   FOREIGN KEY (id_curso) REFERENCES Curso (id_curso));
 
-
 -- -----------------------------------------------------
 -- Tabla - Comentario
 -- -----------------------------------------------------
 CREATE TABLE Comentario (
   id_comentario INT NOT NULL AUTO_INCREMENT,
-  comentario VARCHAR(200) NOT NULL,
+  comentario TEXT NOT NULL,
   fecha TIMESTAMP NULL,
   id_usuario INT NOT NULL,
   id_tutorial INT NOT NULL,
@@ -81,7 +80,18 @@ CREATE TABLE Comentario (
   FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario),
   FOREIGN KEY (id_tutorial) REFERENCES Tutorial (id_tutorial));
 
-
+-- -----------------------------------------------------
+-- Tabla - Respuesta_Comentario
+-- -----------------------------------------------------
+CREATE TABLE Respuesta_comentario (
+  id_respuesta_comentario INT NOT NULL AUTO_INCREMENT,
+  respuesta_comentario TEXT NOT NULL,
+  fecha TIMESTAMP NULL,
+  id_usuario INT NOT NULL,
+  id_comentario INT NOT NULL,
+  PRIMARY KEY (id_respuesta_comentario, id_usuario),
+  FOREIGN KEY (id_usuario) REFERENCES Usuario (id_usuario),
+  FOREIGN KEY (id_comentario) REFERENCES Comentario (id_comentario));
 
 -- -----------------------------------------------------
 -- Tabla - Pago
