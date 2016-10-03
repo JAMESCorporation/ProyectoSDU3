@@ -10,3 +10,4 @@ Agregar estas lineas
 
 [mysqld]
 max_allowed_packet  = 500M
+innodb_algo tambien hay que modificar
